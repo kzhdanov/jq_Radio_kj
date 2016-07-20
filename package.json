@@ -1,0 +1,20 @@
+{
+  "name": "radio",
+  "version": "1.0.0",
+  "description": "Radio Ivan",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^1.5.4",
+    "icy": "^2.1.0",
+    "node-internet-radio": "^0.1.4"
+  }
+}
