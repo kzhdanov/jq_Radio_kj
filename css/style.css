@@ -1,10 +1,10 @@
 @media screen and (max-device-width: 480px) {
 	ul.vc-controls {
-		width: auto !important;
+		width: 90% !important;
 	}
 
 	.vc-tape-wrapper{
-		width: auto !important;
+		width: 80% !important;
 		height: auto !important;
 	}
 
@@ -15,8 +15,9 @@
 			display: none;
 	}
 }
+
 	/* Main container */
-	.vc-container{
+	.vc-container {
 		text-align: center;
 		height: 500px;
 		margin-bottom: 50px;
@@ -56,54 +57,13 @@
 		background: transparent url(../images/ajax-loader.gif) no-repeat center center;
 		display: none;
 	}
-	@-webkit-keyframes rotateLeft {
-		0% { -webkit-transform: rotate(0deg) translateZ(-1px); }
-		100% { -webkit-transform: rotate(-360deg) translateZ(-1px); }
-	}
-	@-webkit-keyframes rotateRight {
-		0% { -webkit-transform: rotate(0deg) translateZ(-1px); }
-		100% { -webkit-transform: rotate(360deg) translateZ(-1px); }
-	}
-	@-moz-keyframes rotateLeft {
-		0% { -moz-transform: rotate(0deg) translateZ(-1px); }
-		100% { -moz-transform: rotate(-360deg) translateZ(-1px); }
-	}
-	@-moz-keyframes rotateRight {
-		0% { -moz-transform: rotate(0deg) translateZ(-1px); }
-		100% { -moz-transform: rotate(360deg) translateZ(-1px); }
-	}
-	@-o-keyframes rotateLeft {
-		0% { -o-transform: rotate(0deg) translateZ(-1px); }
-		100% { -o-transform: rotate(-360deg) translateZ(-1px); }
-	}
-	@-o-keyframes rotateRight {
-		0% { -o-transform: rotate(0deg) translateZ(-1px); }
-		100% { -o-transform: rotate(360deg) translateZ(-1px); }
-	}
-	@-ms-keyframes rotateLeft {
-		0% { -ms-transform: rotate(0deg) translateZ(-1px); }
-		100% { -ms-transform: rotate(-360deg) translateZ(-1px); }
-	}
-	@-ms-keyframes rotateRight {
-		0% { -ms-transform: rotate(0deg) translateZ(-1px); }
-		100% { -ms-transform: rotate(360deg) translateZ(-1px); }
-	}
-	@keyframes rotateLeft {
-		0% { transform: rotate(0deg) translateZ(-1px); }
-		100% { transform: rotate(-360deg) translateZ(-1px); }
-	}
-	@keyframes rotateRight {
-		0% { transform: rotate(0deg) translateZ(-1px); }
-		100% { transform: rotate(360deg) translateZ(-1px); }
-	}
 
-	/* Controls list */
 	ul.vc-controls{
 		list-style: none;
 		padding: 0;
 		width: 440px;
 		bottom: 18px;
-		margin: 100px auto;
+		margin: 50px auto;
 		background: -moz-linear-gradient(top, rgba(170,170,170,0.35) 0%, rgba(255,255,255,0.44) 50%, rgba(255,255,255,0.53) 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(170,170,170,0.35)), color-stop(50%,rgba(255,255,255,0.44)), color-stop(100%,rgba(255,255,255,0.53)));
 		background: -webkit-linear-gradient(top, rgba(170,170,170,0.35) 0%,rgba(255,255,255,0.44) 50%,rgba(255,255,255,0.53) 100%);
@@ -127,7 +87,6 @@
 		border-radius: 12px;
 	}
 
-	/* Controls list items */
 	ul.vc-controls li {
 		display: block;
 		float: left;
@@ -164,7 +123,6 @@
 		width: 40%;
 	}
 
-	/* Control icons */
 	ul.vc-controls li span:before{
 		font-size: 16px;
 		line-height: 50px;
@@ -202,7 +160,6 @@
 			0 4px 1px rgba(0,0,0,0.5);
 	}
 
-	/* Pressed (active) */
 	ul.vc-controls li.vc-control-active{
 		height: 50px;
 		margin-top: 2px;
@@ -216,7 +173,6 @@
 
 	}
 
-	/* Activated */
 	ul.vc-controls li.vc-control-pressed,
 	ul.vc-controls li.vc-control-active.vc-control-pressed{
 		height: 50px;
@@ -229,12 +185,8 @@
 			0 7px 5px rgba(255,255,255,0.5);
 	}
 
-	/*
-	Background for the volume knob
-	See knobKnob.css for the knob style
-	*/
 	.vc-volume-wrap{
-		margin: -200px auto;
+		margin: -150px auto;
 		width: 100px;
 		height: 100px;
 		background: -moz-linear-gradient(top, rgba(170,170,170,0.35) 0%, rgba(255,255,255,0.44) 50%, rgba(255,255,255,0.53) 100%);
@@ -264,7 +216,6 @@
 		display: block;
 	}
 
-	/* Text style for controls */
 	ul.vc-controls li,
 	.vc-volume-wrap:after{
 		font-family: fantasy;
