@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var internetradio = require('node-internet-radio');
-
+var utils = require('./backend/Utils');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
@@ -22,11 +22,13 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
   var self = res;
-  internetradio.getStationInfo('http://nashe64.streamr.ru', function (error, station) {
-    console.log(station);
-    self.send(station);
+  internetradio.getStationInfo('http://178.236.141.243:8000/live', function (error, station) {
+    if(!error) {
+      self.send(utils.TitleParcing.call(station));
+    };
   });
 });
+
 
 app.listen(10000, function () {
   console.log('Server successfully started on 10000 port');

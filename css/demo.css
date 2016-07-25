@@ -168,3 +168,46 @@ footer {
 .no-csstransitions .support-note span.no-csstransitions{
 	display: block;
 }
+
+.songInfo {
+		margin-top: 10px;
+	  font-size: 1.4em;
+    line-height: 18px;
+    font-weight: bold;
+    color: #444;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.songInfo div {
+	min-height: 8px;
+}
+
+.songInfo__song {
+		padding: 0 5px 5px 5px;
+	  font-size: .9em;
+    color: #888;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+		font-weight: normal;
+}
+
+.songInfo__album {
+    position: absolute;
+    top: 0;
+		left: auto;
+		font-weight: bold;
+    color: #444;
+    line-height:100px;
+    text-align: center;
+    z-index: 10;
+    opacity: 1;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}

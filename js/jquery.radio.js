@@ -7,7 +7,7 @@
 	$.Radio.defaults 	= {
 		fallbackMessage	: 'HTML5 audio not supported',
 		initialVolume	: 0.3,
-		url : "http://nashe64.streamr.ru",
+		url : "http://178.236.141.243:8000/live",
 	};
 
 	$.Radio.prototype 	= {
@@ -67,7 +67,7 @@
 					this.audio.volume = this.options.initialVolume;
 
 					var ajax = new $.Ajaxes();
-					ajax.setTitleInterval(1000);
+					ajax.setTitleInterval(5000);
 				}
 			}
 		},
@@ -145,7 +145,7 @@
 
 		setTitleInterval: function(interval) {
 			this.setTitleAjax();
-			//setInterval(this.setTitleAjax.bind(this), interval);
+			setInterval(this.setTitleAjax.bind(this), interval);
 		},
 
 		setTitleAjax : function() {
@@ -154,7 +154,9 @@
 				url: this.url,
 			}).done(function(data) {
 				console.log(data);
-				$('.js-title').empty().text(data.title);
+				$('.js-group').empty().text(data.autor);
+				$('.js-song').empty().text(data.songName);
+				$('.js-album').empty().text(data.album);
 			});
 		}
 	};
