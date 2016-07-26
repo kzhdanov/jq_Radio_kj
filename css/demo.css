@@ -22,7 +22,6 @@
 
 html,
 body{
-	font-family: Cambria, Georgia, serif;
 	background: #b6b6b6 url(../images/bg.jpg) 100% 100%;
 	font-weight: 400;
 	font-size: 15px;
@@ -54,33 +53,6 @@ a:hover{
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     text-align: center;
 }
-.container > header h1{
-	font-family: 'Aldrich';
-	font-size: 26px;
-	line-height: 26px;
-	margin: 0;
-	position: relative;
-	font-weight: 300;
-	color: #666;
-	text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
-}
-.container > header h1 span{
-	font-weight: 700;
-}
-.container > header h2{
-	width: 500px;
-	font-size: 14px;
-	line-height: 22px;
-	font-weight: 300;
-	margin: 0 auto;
-	padding: 15px 0 5px 0;
-	color: #666;
-	font-style: italic;
-	text-shadow: 1px 1px 1px rgba(255,255,255,0.9);
-}
-.container > header h2 strong{
-	color: #781430;
-}
 
 .main{
 	width: 672px;
@@ -103,7 +75,7 @@ a:hover{
 	text-transform: uppercase;
 	z-index: 9999;
 	position: relative;
-	font-family: Cambria, Georgia, serif;
+	font-family: "Helveticaneuecyr Light";
 	opacity: .4;
 	border-bottom: 2px solid #ADB4BC;
 	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
@@ -147,7 +119,6 @@ footer {
 	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
 	text-shadow: 0 1px 1px rgba(255,255,255,0.8);
 	font-size: 10px;
-	font-family: 'Aldrich';
 	text-transform: uppercase;
 	font-weight: 300;
 	letter-spacing: 1px;
