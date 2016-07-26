@@ -153,13 +153,19 @@
 				method: "POST",
 				url: this.url,
 			}).done(function(data) {
-				console.log(data);
 				if(data) {
-					$('.js-group').empty().text(data.autor);
-					$('.js-song').empty().text(data.songName);
-					$('.js-album').empty().text(data.album);
+
+					if( data.autor !== $.trim($('.js-group').text()) ||
+							data.songName !== $.trim($('.js-song').text()) ||
+							data.album !== $.trim($('.js-album').text()))
+					{
+						$('.js-group').empty().text(data.autor);
+						$('.js-song').empty().text(data.songName);
+						$('.js-album').empty().text(data.album);
+					}
+
 				} else {
-					console.log('nothing change');
+					console.log('Error');
 				}
 			});
 		}

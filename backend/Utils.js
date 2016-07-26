@@ -1,10 +1,12 @@
 'use strict';
+var defaultCash = {
+  autor: 'no name',
+  album: 'no name',
+  songName: 'no name',
+}
+
 var Utils = {
-  cash: {
-    autor: 'no name',
-    album: 'no name',
-    songName: 'no name',
-  },
+  cash: Object.assign({}, defaultCash)
 };
 
 function BuildSongInfo(info) {
@@ -30,19 +32,6 @@ Utils.TitleParcing = function () {
     console.log(e);
     return null;
   }
-};
-
-Utils.HasChange = function(station) {
-  try {
-    var temp = BuildArray.call(station);
-    if( Utils.cash.autor !== temp[0] ||  Utils.cash.album !== temp[2] || Utils.cash.songName !== temp[1] )
-      return true;
-    else
-      return false;
-
-  } catch (e) {
-    return false;
-  }
-};
+}
 
 module.exports = Utils;

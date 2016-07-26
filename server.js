@@ -29,13 +29,8 @@ app.post('/', function (req, res) {
         title: "Автор  ₽ Песня  ₽   Альбом  "
       }
 
-      if(utils.HasChange(station)) {
         result = utils.TitleParcing.call(station);
         self.send(result);
-      } else {
-        console.log('test');
-        self.send(null);
-      }
   //  };
   //});
 });
