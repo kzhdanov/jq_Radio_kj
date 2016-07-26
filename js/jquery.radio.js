@@ -52,7 +52,7 @@
 			this.$volume 	= $( '<div style="display:none;" class="vc-volume-wrap"><div class="vc-volume-control"><div class="vc-volume-knob"></div></div></div> ').appendTo( this.$el );
 			if (document.createElement('audio').canPlayType) {
 				if (!document.createElement('audio').canPlayType('audio/mpeg') && !document.createElement('audio').canPlayType('audio/ogg')) {
-					console.log('wrong');
+					toastr.warning('wrong');
 				}
 				else {
 					this.$controls.show();
@@ -164,9 +164,9 @@
 						$('.js-album').empty().text(data.album);
 					}
 
-				} else {
-					console.log('Error');
-				}
+				} else
+					toastr.error('Oh, something went wrong...');
+
 			});
 		}
 	};
@@ -212,9 +212,7 @@
 	};
 
 	var logError 	= function( message ) {
-		if ( window.console ) {
-			window.console.error( message );
-		}
+		toastr.error( message );
 	};
 
 	$.fn.radio	= function( options ) {
