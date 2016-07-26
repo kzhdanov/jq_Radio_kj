@@ -22,14 +22,20 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
   var self = res;
-  internetradio.getStationInfo('http://178.236.141.243:8000/live', function (error, station) {
-    if(!error) {
-      self.send(utils.TitleParcing.call(station));
-    };
-  });
+  var result;
+  //internetradio.getStationInfo('http://178.236.141.243:8000/live', function (error, station) {
+  //  if(!error) {
+      var station = {
+        title: "Автор  ₽ Песня  ₽   Альбом  "
+      }
+
+        result = utils.TitleParcing.call(station);
+        self.send(result);
+  //  };
+  //});
 });
 
 
-app.listen(10000, function () {
-  console.log('Server successfully started on 10000 port');
+app.listen(10001, function () {
+  console.log('Server successfully started on 10001 port');
 });

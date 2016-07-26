@@ -141,7 +141,7 @@
 
 	$.Ajaxes = function	() {};
 	$.Ajaxes.prototype = {
-		url: 'http://localhost:10000/',
+		url: 'http://localhost:10001/',
 
 		setTitleInterval: function(interval) {
 			this.setTitleAjax();
@@ -153,10 +153,20 @@
 				method: "POST",
 				url: this.url,
 			}).done(function(data) {
-				console.log(data);
-				$('.js-group').empty().text(data.autor);
-				$('.js-song').empty().text(data.songName);
-				$('.js-album').empty().text(data.album);
+				if(data) {
+
+					if( data.autor !== $.trim($('.js-group').text()) ||
+							data.songName !== $.trim($('.js-song').text()) ||
+							data.album !== $.trim($('.js-album').text()))
+					{
+						$('.js-group').empty().text(data.autor);
+						$('.js-song').empty().text(data.songName);
+						$('.js-album').empty().text(data.album);
+					}
+
+				} else {
+					console.log('Error');
+				}
 			});
 		}
 	};

@@ -10,6 +10,16 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+ font-family: 'Helveticaneuecyr Thin';
+ src: url("fonts/helveticaneuecyr-thin.otf");
+}
+
+@font-face {
+ font-family: 'Helveticaneuecyr Light';
+ src: url("fonts/helveticaneuecyr-light.otf");
+}
+
 html,
 body{
 	font-family: Cambria, Georgia, serif;
@@ -170,15 +180,15 @@ footer {
 }
 
 .songInfo {
-		margin-top: 10px;
+		margin-top: 15px;
 	  font-size: 1.4em;
-    line-height: 18px;
+    line-height: 20px;
     font-weight: bold;
     color: #444;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helveticaneuecyr Light";
 }
 
 .songInfo div {
@@ -186,28 +196,13 @@ footer {
 }
 
 .songInfo__song {
+	 font-family: "Helveticaneuecyr Thin";
 		padding: 0 5px 5px 5px;
-	  font-size: .9em;
+	  font-size: .8em;
     color: #888;
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 		font-weight: normal;
-}
-
-.songInfo__album {
-    position: absolute;
-    top: 0;
-		left: auto;
-		font-weight: bold;
-    color: #444;
-    line-height:100px;
-    text-align: center;
-    z-index: 10;
-    opacity: 1;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
 }
