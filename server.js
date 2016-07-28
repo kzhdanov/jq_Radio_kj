@@ -31,12 +31,12 @@ app.post('/', function (req, res) {
       result = utils.TitleParcing.call(station);
       self.send(result);
     } else {
-      self.send({ type: 'error', data: error });
+      self.send({ type: 'error' });
     }
   });
 });
 
-app.post('/Rating/Set', function (req, res) {
+app.post('/Rating/Save', function (req, res) {
   console.log('Start');
   rating.SaveRating({
     id: '1',

@@ -146,7 +146,7 @@
 	$.Ajaxes = function	() {
 	};
 	$.Ajaxes.prototype = {
-		url: 'http://localhost:10001/',
+		url: 'http://192.168.1.5:10001/',
 		intervalId: 0,
 
 		setTitleInterval: function(interval) {
@@ -157,6 +157,9 @@
 		setTitleAjax : function() {
 			$.ajax({
 				method: "POST",
+				async: true,
+				cache: false,
+				crossDomain: false,
 				url: this.url,
 			}).done(function(data) {
 				if(data) {
