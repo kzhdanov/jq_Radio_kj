@@ -114,10 +114,14 @@
 			var _self	= this;
 			this._updateButtons( 'play' );
 			$.when( this.sound.play( 'click' ) ).done( function() {
+				try {
 					_self._prepare( _self.songs );
 					$( this ).off( 'canplay' );
 					_self.audio.currentTime = 0;
 					_self.audio.play();
+				} catch (e) {
+					console.log(e);
+				}
 			});
 		},
 
@@ -139,13 +143,15 @@
 		},
 	};
 
-	$.Ajaxes = function	() {};
+	$.Ajaxes = function	() {
+	};
 	$.Ajaxes.prototype = {
 		url: 'http://localhost:10001/',
+		intervalId: 0,
 
 		setTitleInterval: function(interval) {
 			this.setTitleAjax();
-			setInterval(this.setTitleAjax.bind(this), interval);
+			intervalId = setInterval(this.setTitleAjax.bind(this), interval);
 		},
 
 		setTitleAjax : function() {
@@ -154,19 +160,21 @@
 				url: this.url,
 			}).done(function(data) {
 				if(data) {
-
-					if( data.autor !== $.trim($('.js-group').text()) ||
-							data.songName !== $.trim($('.js-song').text()) ||
-							data.album !== $.trim($('.js-album').text()))
-					{
-						$('.js-group').empty().text(data.autor);
-						$('.js-song').empty().text(data.songName);
-						$('.js-album').empty().text(data.album);
+					if(data.type !== 'error') {
+						if( data.autor !== $.trim($('.js-group').text()) ||
+								data.songName !== $.trim($('.js-song').text()) ||
+								data.album !== $.trim($('.js-album').text()))
+						{
+							$('.js-group').empty().text(data.autor);
+							$('.js-song').empty().text(data.songName);
+							$('.js-album').empty().text(data.album);
+						}
+					} else {
+						toastr.error("Oh, something went wrong... Can't connect to stream.");
+						clearInterval(intervalId);
 					}
-
 				} else
 					toastr.error('Oh, something went wrong...');
-
 			});
 		}
 	};
