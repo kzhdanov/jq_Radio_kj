@@ -62,6 +62,9 @@
   <script type="text/javascript">
     $(function () {
       $('#vc-container').radio();
+      $('audio').on('error', function (e) {
+        toastr.error('Radio isn\'t available now, please try again later...');
+      });
     });
   </script>
 

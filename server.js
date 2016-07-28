@@ -30,7 +30,9 @@ app.post('/', function (req, res) {
     if (!error) {
       result = utils.TitleParcing.call(station);
       self.send(result);
-    };
+    } else {
+      self.send({ type: 'error', data: error });
+    }
   });
 });
 
