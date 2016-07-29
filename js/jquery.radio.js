@@ -178,6 +178,8 @@
 					}
 				} else
 					toastr.error('Oh, something went wrong...');
+			}).fail(function(ex) {
+				toastr.error('Oh, something went wrong...');
 			});
 		}
 	};
