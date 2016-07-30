@@ -8,9 +8,15 @@ var rating = require('./backend/Models/RatingModel')(pool);
 var bodyParser = require('body-parser');
 var internetradio = require('node-internet-radio');
 var utils = require('./backend/Utils');
+var basicAuth = require('basic-auth-connect');
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
+
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,POST');
@@ -19,16 +25,23 @@ app.use(function (req, res, next) {
   next();
 });
 
+var auth = basicAuth('Ivan', 'EgorLetov@!');
+app.get('/RadioAdmin/', auth, function (req, res) {
+  res.sendFile(__dirname + '/Admin/Admin.html');
+});
+
+app.get('/weeks', function (req, res) {
+  res.render('Weeks');
+});
+
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('Index');
 });
 
 app.post('/', function (req, res) {
   var self = res;
   var result;
-    console.log('something1');
   internetradio.getStationInfo('http://178.236.141.243:8000/live', function (error, station) {
-    console.log('something');
     if (!error) {
       result = utils.TitleParcing.call(station);
       self.send(result);
