@@ -187,3 +187,37 @@ footer {
 	font-size: 1.4em;
 	opacity: .3;
 }
+
+.week {
+	display: inline-block;
+	font-size: 1.3em;
+  font-weight: bold;
+  height: 100%;
+  background-color: aqua;
+	border-bottom: 2px solid aqua;
+}
+
+.week.active{
+  background-color: transparent;
+}
+
+.AlbumsDiv {
+	display: flex;
+	width: 70%;
+	margin: 2% 2% 2% 15%;
+	flex-flow: row wrap;
+}
+
+.AlbumsDiv--Img {
+	width: 50%;
+	height: 200px;
+}
+.AlbumsDiv--Title {
+	width: 50%;
+	height: 100px;
+}
+.AlbumsDiv--PrevText {
+	width: 50%;
+	height: 100px;
+	align-self: stretch;
+}
