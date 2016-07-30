@@ -119,6 +119,11 @@
 					$( this ).off( 'canplay' );
 					_self.audio.currentTime = 0;
 					_self.audio.play();
+
+					var rating = new $.Rating();
+					rating._clean();
+					rating.hoverOn();
+
 				} catch (e) {
 					console.log(e);
 				}
@@ -126,6 +131,8 @@
 		},
 
 		_stop	: function( buttons ) {
+			var rating = new $.Rating();
+			rating.hoverOff();
 			if( !buttons ) {
 				this._updateButtons( 'stop' );
 				this.sound.play( 'click' );
@@ -143,8 +150,59 @@
 		},
 	};
 
-	$.Ajaxes = function	() {
+	$.Rating = function() {
+		this._init();
 	};
+	$.Rating.prototype = {
+		ratintDiv: $('.Rating'),
+		ratings: $('.Rating li'),
+		ratingTitle: $('.Rating__Title'),
+
+		_init: function () {
+			var _self = this;
+			_self.setOpacity(true);
+			this.ratings.click(function() {
+				_self.hoverOff();
+			});
+		},
+
+		_clean: function () {
+				this.ratings.css({ backgroundColor: 'transparent' });
+		},
+
+		hoverOn: function () {
+			this.ratings.mouseenter(function () {
+				 var _self = $(this);
+				 $('.Rating li').each(function (index, el) {
+					if (el.id <= Number(_self.attr('id')))
+						$(this).css({ backgroundColor: '#333' });
+				});
+			}).mouseleave(function () {
+				 var _self = $(this);
+				 $('.Rating li').each(function (index, el) {
+					if (el.id <= Number(_self.attr('id')))
+						$(this).css({ backgroundColor: 'transparent' });
+				});
+			 });
+		},
+
+		setOpacity: function(isTurn) {
+			if (isTurn) {
+				this.ratintDiv.css({ opacity: '.8' });
+				this.ratingTitle.css({ opacity: '.5' });
+			} else {
+				this.ratintDiv.css({ opacity: '.3' });
+				this.ratingTitle.css({ opacity: '.3' });
+			}
+		},
+
+		hoverOff: function() {
+			this.setOpacity(false);
+			this.ratings.off("mouseenter mouseleave");
+		},
+	}
+
+	$.Ajaxes = function	() {};
 	$.Ajaxes.prototype = {
 		url: 'http://192.168.1.5:10001/',
 		intervalId: 0,
@@ -181,6 +239,11 @@
 			}).fail(function(ex) {
 				toastr.error('Oh, something went wrong...');
 			});
+			setTimeout(function() {
+				if($('.js-group').text() === '') {
+						clearInterval(intervalId);
+				}
+			}, 30000)
 		}
 	};
 
