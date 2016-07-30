@@ -26,7 +26,9 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   var self = res;
   var result;
+    console.log('something1');
   internetradio.getStationInfo('http://178.236.141.243:8000/live', function (error, station) {
+    console.log('something');
     if (!error) {
       result = utils.TitleParcing.call(station);
       self.send(result);

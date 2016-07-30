@@ -163,3 +163,27 @@ footer {
     overflow: hidden;
 		font-weight: normal;
 }
+
+.Rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	padding: 0;
+	margin: 0;
+	opacity: .3;
+}
+
+.Rating li {
+	display: inline-block;
+  border: 2px solid #333333;
+  border-radius: 10px;
+  width: 1.28571429em;
+	height: 1.28571429em;
+	margin: 10px 11px 5px 11px;
+}
+
+.Rating__Title {
+	font-family: "Helveticaneuecyr Light";
+	font-size: 1.4em;
+	opacity: .3;
+}
