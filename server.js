@@ -28,10 +28,12 @@ app.use(function (req, res, next) {
 });
 
 ///ГЛАВНАЯ РАДИО///
+///ГЛАВНАЯ
 app.get('/', function (req, res) {
   res.render('Index');
 });
 
+///ТУТ БЕР[Е]М ЗАГОЛОВКИ
 app.post('/', function (req, res) {
   var self = res;
   var result;
@@ -65,6 +67,7 @@ app.post('/Rating/Save', function (req, res) {
 
 ///АДМИНИСТРАТИВНАЯ ЧАСТЬ///
 var auth = basicAuth('Ivan', 'EgorLetov@!');
+///АДМИНКА
 app.get('/RadioAdmin/', auth, function (req, res) {
   album.GetAlbumsByWeek(1, function (err, al) {
     if (!err)
@@ -72,6 +75,7 @@ app.get('/RadioAdmin/', auth, function (req, res) {
   });
 });
 
+///ПОИСК
 app.post('/RadioAdmin/Get', auth, function (req, res) {
   album.GetAlbumsByWeek(req.body.week, function (err, al) {
     if (!err)
@@ -79,6 +83,7 @@ app.post('/RadioAdmin/Get', auth, function (req, res) {
   });
 });
 
+///СОХРАНЕНИЕ НОВОГО ЭЛЕМЕНТА
 app.post('/RadioAdmin/Save', auth, function (req, res) {
   try {
     if (req.body.album != null) {
@@ -104,15 +109,78 @@ app.post('/RadioAdmin/Save', auth, function (req, res) {
   }
 });
 
+///ПОЛУЧЕНИЕ СУЩЕТВУЮЩЕЙ СУЩЬНОСТИ ДЛЯ РЕДАКТИРОВАНИЯ
+app.post('/RadioAdmin/Edit', auth, function (req, res) {
+  try {
+    if (req.body.id != null) {
+      album.GetAlbumById(req.body.id, function (err, data) {
+        if (!err)
+          res.json({ type: 'success', data: data });
+        else
+          res.json({ type: 'error' });
+      });
+    }
+  } catch (e) {
+    res.json({ type: 'error' });
+  }
+});
+
+///РЕДАКТИРОВАНИЕ СУЩЕТВУЮЩЕЙ СУЩЬНОСТИ
+app.post('/RadioAdmin/EditSave', auth, function (req, res) {
+  try {
+    if (req.body.album) {
+      var reqAlbum = qs.parse(req.body.album);
+
+      if (reqAlbum.IsVisible)
+        reqAlbum.IsVisible = true;
+      else
+        reqAlbum.IsVisible = false;
+
+      album.EditAlbumSave([reqAlbum, reqAlbum.id], function (err, data) {
+        if (!err)
+          res.json({ type: 'success' });
+        else
+          res.json({ type: 'error' });
+      });
+    }
+  } catch (e) {
+    res.json({ type: 'error' });
+  }
+});
+
+///УДАЛЕНИЕ
+app.post('/RadioAdmin/Delete', auth, function (req, res) {
+  try {
+    if (req.body.id) {
+      album.DeleteAlbum(req.body.id, function (err, data) {
+        if (!err)
+          res.json({ type: 'success' });
+        else
+          res.json({ type: 'error' });
+      });
+    }
+  } catch (e) {
+    res.json({ type: 'error' });
+  }
+});
+
 ///СТРАНИЦА НЕДЕЛИ///
 app.get('/weeks', function (req, res) {
-  //
-  var items = [
-    { src: './TESTCovers/killers.jpg', title: 'The Killer - "All These Things That I\'ve Done" (UK version)', rate: '4,5', genres: 'Indy Rock', text: 'PrevText PrevText PrevText PrevText PrevText Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
-    { src: './TESTCovers/killers.jpg', title: 'The Killer - "All These Things That I\'ve Done" (UK version)', rate: '4,5', genres: 'Indy Rock', text: 'PrevText PrevText PrevText PrevText PrevText Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
-    { src: './TESTCovers/killers.jpg', title: 'The Killer - "All These Things That I\'ve Done" (UK version)', rate: '4,5', genres: 'Indy Rock', text: 'PrevText PrevText PrevText PrevText PrevText Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
-  ];
-  res.render('Weeks.ejs', { items: items });
+  try {
+    album.GetAlbumsByWeek(1, function (err, data) {
+      if (!err) {
+        data.map(function (e, i) {
+          e.src = './TESTCovers/' + e.ImgName;
+          e.title = e.BandName + ' -  «' + e.AlbumName + '» ';
+          e.rate = 9;
+        });
+
+        res.render('Weeks.ejs', { items: data });
+      }
+    });
+  } catch (e) {
+    res.render('Weeks.ejs', { items: null });
+  }
 });
 
 app.listen(10001, function () {
