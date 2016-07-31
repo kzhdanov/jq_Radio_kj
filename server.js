@@ -25,15 +25,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-var auth = basicAuth('Ivan', 'EgorLetov@!');
-app.get('/RadioAdmin/', auth, function (req, res) {
-  res.sendFile(__dirname + '/Admin/Admin.html');
-});
-
-app.get('/weeks', function (req, res) {
-  res.render('Weeks');
-});
-
+///ГЛАВНАЯ РАДИО///
 app.get('/', function (req, res) {
   res.render('Index');
 });
@@ -67,6 +59,23 @@ app.post('/Rating/Save', function (req, res) {
     else
       console.log(error);
   });
+});
+
+///АДМИНИСТРАТИВНАЯ ЧАСТЬ///
+var auth = basicAuth('Ivan', 'EgorLetov@!');
+app.get('/RadioAdmin/', auth, function (req, res) {
+  res.render('Admin.ejs');
+});
+
+///СТРАНИЦА НЕДЕЛИ
+app.get('/weeks', function (req, res) {
+  //
+  var items = [
+    { src: './TESTCovers/killers.jpg', title: 'The Killer - "All These Things That I\'ve Done" (UK version)', rate: '4,5', genres: 'Indy Rock', text: 'PrevText PrevText PrevText PrevText PrevText Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
+    { src: './TESTCovers/killers.jpg', title: 'The Killer - "All These Things That I\'ve Done" (UK version)', rate: '4,5', genres: 'Indy Rock', text: 'PrevText PrevText PrevText PrevText PrevText Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
+    { src: './TESTCovers/killers.jpg', title: 'The Killer - "All These Things That I\'ve Done" (UK version)', rate: '4,5', genres: 'Indy Rock', text: 'PrevText PrevText PrevText PrevText PrevText Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' },
+  ];
+  res.render('Weeks.ejs', { items: items });
 });
 
 app.listen(10001, function () {
