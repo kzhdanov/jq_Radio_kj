@@ -26,6 +26,15 @@
 		width: 100%;
 		height: auto;
 	}
+	.Rating {
+		padding: 0;
+		margin: 0;
+	}
+
+	.container > header {
+		margin: 5px;
+		padding: 0;
+	}
 }
 
 	/* Main container */
@@ -44,6 +53,8 @@
 		width: 440px;
 		height: 300px;
 		bottom: 130px;
+	}
+	.vc-tape-wrapper > img{
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#59aaaaaa', endColorstr='#87ffffff',GradientType=0 );
 		border: 1px solid rgba(0,0,0,0.1);
 		border-bottom-color: rgba(255,255,255,0.6);
@@ -57,7 +68,7 @@
 		-webkit-box-sizing: content-box;
 		-moz-box-sizing: content-box;
 		box-sizing: content-box;
-		border-radius: 12px;
+		border-radius: 30px;
 	}
 	.vc-loader{
 		position: absolute;
