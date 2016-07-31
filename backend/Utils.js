@@ -3,10 +3,10 @@ var defaultCash = {
   autor: 'no name',
   album: 'no name',
   songName: 'no name',
-}
+};
 
 var Utils = {
-  cash: Object.assign({}, defaultCash)
+  cash: Object.assign({}, defaultCash),
 };
 
 function BuildSongInfo(info) {
@@ -25,13 +25,24 @@ Utils.TitleParcing = function () {
   try {
     var date = new Date();
     if (this.title) {
-      return(BuildSongInfo(BuildArray.call(this)));
+      return (BuildSongInfo(BuildArray.call(this)));
     }
-    throw new Error("no song title: title exception time is " + date);
+
+    throw new Error('no song title: title exception time is ' + date);
   } catch (e) {
     console.log(e);
     return null;
   }
-}
+};
+
+Utils.Guid = function () {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  };
+
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+};
 
 module.exports = Utils;
