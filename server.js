@@ -192,6 +192,20 @@ app.get('/weeks', function (req, res) {
   }
 });
 
+///ПОЛУЧИМ НОМЕР НЕДЕЛИ
+app.post('/weeks/getNumber', function (req, res) {
+  try {
+    album.GetLastWeekNumber(null, function (err, weekNumber) {
+      if (!err)
+          res.json({ type: 'success', number: weekNumber[0].Number.toString().substring(2) });
+      else
+        res.json({ type: 'error' });
+    });
+  } catch (e) {
+    res.json({ type: 'error' });
+  }
+});
+
 app.listen(10001, function () {
   console.log('Server successfully started on 10001 port');
 });
