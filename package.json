@@ -19,6 +19,7 @@
     "html": "0.0.10",
     "icy": "^2.1.0",
     "mysql": "^2.11.1",
-    "node-internet-radio": "^0.1.4"
+    "node-internet-radio": "^0.1.4",
+    "querystring": "^0.2.0"
   }
 }

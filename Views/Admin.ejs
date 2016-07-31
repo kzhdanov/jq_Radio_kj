@@ -14,55 +14,91 @@
   <body style="background-image:url('./images/adminback.jpg');">
     <div class="container-fluid">
     <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h1><small>Альбомы</small></h1>
+        <div class="col-md-2" style="padding-left:0">
+          <input type="number" class="form-control" name="WeekNumberSearch" id="WeekNumberSearch" placeholder="№ недели для поиска">
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-default" id="Search">Поиск</button>
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Неделя</th>
+              <th>Дата публикации</th>
+              <th>Группа</th>
+              <th>Альбом</th>
+              <th>Отображается на сайте?</th>
+              <th>Картинка</ht>
+              <th style="width:10%">Действия</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% include AdminPartial.ejs %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
       <div class="col-md-7 col-md-offset-2">
+        <h1><small>Создать новую статью на сайте</small></h1>
         <form id="AddAlbumInfo" class="form-horizontal"/>
         <div class="form-group">
           <label for="WeekNumber" class="col-sm-2 control-label">Номер недели</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="WeekNumber" placeholder="№ недели (он связывает альбомы)">
+            <input type="text" class="form-control" name="WeekNumber" id="WeekNumber" placeholder="№ недели (он связывает альбомы)">
           </div>
         </div>
           <div class="form-group">
-            <label for="GroupName" class="col-sm-2 control-label">Название группы</label>
+            <label for="BandName" class="col-sm-2 control-label">Название группы</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="GroupName" placeholder="Группа (Название должно быть точно как в стриме иначе рейтинг не вытянуть)">
+              <input type="text" class="form-control" name="BandName" id="BandName" placeholder="Группа (Название должно быть точно как в стриме иначе рейтинг не вытянуть)">
             </div>
           </div>
           <div class="form-group">
             <label for="AlbumName" class="col-sm-2 control-label">Название альбома</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="AlbumName" placeholder="Альбом (Название должно быть точно как в стриме иначе рейтинг не вытянуть)">
+              <input type="text" class="form-control" name="AlbumName" id="AlbumName" placeholder="Альбом (Название должно быть точно как в стриме иначе рейтинг не вытянуть)">
             </div>
           </div>
           <div class="form-group">
             <label for="Genres" class="col-sm-2 control-label">Жанры</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="Genres" placeholder="Жанр или жанры (через запятую)">
+              <input type="text" class="form-control" name="Genres" id="Genres" placeholder="Жанр или жанры (через запятую)">
             </div>
           </div>
           <div class="form-group">
             <label for="Year" class="col-sm-2 control-label">Дата выхода альбома</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="Year" placeholder="Дата выхода альбома">
+              <input type="text" class="form-control" name="Year" id="Year" placeholder="Дата выхода альбома">
             </div>
           </div>
           <div class="form-group">
             <label for="preView" class="col-sm-2 control-label">Превью</label>
             <div class="col-sm-10">
-              <textarea class="form-control" id="preView" placeholder="Превью" rows="3"></textarea>
+              <textarea class="form-control" name="preView" id="preView" placeholder="Превью" rows="3"></textarea>
             </div>
           </div>
           <div class="form-group">
             <label for="mainText" class="col-sm-2 control-label">Основной текст статьи</label>
             <div class="col-sm-10">
-              <textarea class="form-control" id="mainText" placeholder="Основной текст статьи" rows="20"></textarea>
+              <textarea class="form-control" name="mainText" id="mainText" placeholder="Основной текст статьи" rows="20"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ImgName" class="col-sm-2 control-label">Название картинки альбома</label>
+            <div class="col-sm-10">
+              <span>Картинка будет браться из папки '~/Автор/Альбом/cover.jpg' ты можешь тут исправить имя и расширение картинки</span>
+              <input type="text" class="form-control" name="ImgName" id="ImgName" placeholder="aa" value="cover.jpg">
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox"> Видимая статья?
+                  <input type="checkbox" name="IsVisible"> Видимая статья?
                 </label>
               </div>
             </div>
@@ -84,20 +120,49 @@
       (function () {
         $('#Save').click(function (e) {
           e.preventDefault();
-          $(this).hide();
+          var _self = $( this );
+          _self.hide();
 
           $.ajax({
             method: 'POST',
             async: true,
             cache: false,
             crossDomain: false,
-            url: '',
+            data: { album: $('#AddAlbumInfo').serialize() },
+            url: '/RadioAdmin/Save',
           }).done(function (data) {
+            _self.show();
+            if (data.type === 'success')
+              toastr.success('Все успешно сохранилось');
+            else
+              toastr.error('Ошибка в процессе сохранения...');
+          }).fail(function (ex) {
+            _self.show();
+            toastr.error('Oh, something went wrong...');
+          });
+        });
 
+        $('#Search').click(function (e) {
+          e.preventDefault();
+          var _self = $( this );
+
+          _self.hide();
+
+          $.ajax({
+            method: 'POST',
+            async: true,
+            cache: false,
+            crossDomain: false,
+            data: { week: Number($('#WeekNumberSearch').val()) },
+            url: '/RadioAdmin/Get',
+          }).done(function (data) {
+            _self.show();
+            $('table tbody').empty().html(data);
           }).fail(function (ex) {
             toastr.error('Oh, something went wrong...');
           });
         });
+
       })();
     </script>
   </body>
