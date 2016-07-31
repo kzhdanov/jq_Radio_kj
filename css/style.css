@@ -14,6 +14,18 @@
 	.left {
 			display: none;
 	}
+
+	.AlbumsDiv {
+		width: 80%;
+		margin: 1% 1% 1% 5%;
+	}
+	.AlbumsDiv--Img {
+		width: 100%;
+	}
+	.AlbumsDiv_Info {
+		width: 100%;
+		height: auto;
+	}
 }
 
 	/* Main container */
