@@ -4,7 +4,7 @@
 	}
 
 	.vc-tape-wrapper{
-		width: 80% !important;
+		width: 60% !important;
 		height: auto !important;
 	}
 
@@ -16,8 +16,8 @@
 	}
 
 	.AlbumsDiv {
-		width: 80%;
-		margin: 1% 1% 1% 5%;
+		width: 86%;
+		margin: 1% 1% 10% 6%;
 	}
 	.AlbumsDiv--Img {
 		width: 100%;
