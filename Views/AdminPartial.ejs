@@ -7,7 +7,9 @@
       <td><%= Albums[i].AlbumName %></td>
       <td><%= Albums[i].IsVisible %></td>
       <td><%= Albums[i].ImgName %></td>
-      <td><a href="#">Редактировать</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Удалить</a></td>
+      <td>
+        <a href="#" onclick="EditClick(event, '<%= Albums[i].id %>')">Редактировать</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="DeleteClick(event, '<%= Albums[i].id %>')">Удалить</a>
+      </td>
     </tr>
   <% } %>
 <% } else { %>
