@@ -67,17 +67,24 @@ app.post('/Rating/Save', function (req, res) {
 
 ///АДМИНИСТРАТИВНАЯ ЧАСТЬ///
 var auth = basicAuth('Ivan', 'EgorLetov@!');
+
 ///АДМИНКА
 app.get('/RadioAdmin/', auth, function (req, res) {
-  album.GetAlbumsByWeek(1, function (err, al) {
-    if (!err)
-      res.render('Admin.ejs', { Albums: al });
+  album.GetLastWeekNumber(null, function (err, weekNumber) {
+    if (!err) {
+      album.GetAlbumsByWeekAll(weekNumber[0].Number, function (err, al) {
+        if (!err)
+          res.render('Admin.ejs', { Albums: al });
+      });
+    } else {
+      console.log(error);
+    }
   });
 });
 
 ///ПОИСК
 app.post('/RadioAdmin/Get', auth, function (req, res) {
-  album.GetAlbumsByWeek(req.body.week, function (err, al) {
+  album.GetAlbumsByWeekAll(req.body.week, function (err, al) {
     if (!err)
       res.render('AdminPartial.ejs', { Albums: al });
   });
@@ -167,16 +174,18 @@ app.post('/RadioAdmin/Delete', auth, function (req, res) {
 ///СТРАНИЦА НЕДЕЛИ///
 app.get('/weeks', function (req, res) {
   try {
-    album.GetAlbumsByWeek(1, function (err, data) {
-      if (!err) {
-        data.map(function (e, i) {
-          e.src = './TESTCovers/' + e.ImgName;
-          e.title = e.BandName + ' -  «' + e.AlbumName + '» ';
-          e.rate = 9;
-        });
+    album.GetLastWeekNumber(null, function (err, weekNumber) {
+      album.GetAlbumsByWeekActive(weekNumber[0].Number, function (err, data) {
+        if (!err) {
+          data.map(function (e, i) {
+            e.src = './TESTCovers/' + e.ImgName;
+            e.title = e.BandName + ' -  «' + e.AlbumName + '» ';
+            e.rate = 9;
+          });
 
-        res.render('Weeks.ejs', { items: data });
-      }
+          res.render('Weeks.ejs', { items: data });
+        }
+      });
     });
   } catch (e) {
     res.render('Weeks.ejs', { items: null });
