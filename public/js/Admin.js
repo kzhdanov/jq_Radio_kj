@@ -41,7 +41,7 @@ function EditClick(e, id) {
 
 function DeleteClick(e, id) {
   e.preventDefault();
-
+  var _self = e;
   $.ajax({
     method: 'POST',
     async: true,
@@ -51,6 +51,7 @@ function DeleteClick(e, id) {
     url: '/RadioAdmin/Delete',
   }).done(function (data) {
     if (data.type === 'success') {
+      _self.target.parentNode.parentNode.remove();
       toastr.success('Элемент удален');
     } else {
       toastr.warning('Ошибка удаления элемента');
@@ -64,8 +65,11 @@ function DeleteClick(e, id) {
   $('#Save').click(function (e) {
     e.preventDefault();
     var _self = $(this);
-    _self.hide();
 
+    if (!Validator($('#AddAlbumInfo')))
+      return false;
+
+    _self.hide();
     if (!$('#Save').attr('data-id') && $('#Save').attr('data-id') !== '') {
       $.ajax({
         method: 'POST',
@@ -123,4 +127,53 @@ function DeleteClick(e, id) {
       toastr.error('Oh, something went wrong...');
     });
   });
+
+  function Validator(form) {
+    var triger = true;
+    var formObject = getFormData(form);
+
+    if (formObject.WeekNumber === '' || formObject.WeekNumber === 0 ||
+        formObject.WeekNumber.length !== 4) {
+      toastr.error('Номер недели должен состоять из 4-х цыфр...');
+      triger = false;
+    }
+
+    if (formObject.BandName === '') {
+      toastr.error('Название группы должно быть заполнено...');
+      triger = false;
+    }
+
+    if (formObject.AlbumName === '') {
+      toastr.error('Название альбома должно быть заполнено...');
+      triger = false;
+    }
+
+    if (formObject.preView === '') {
+      toastr.warning('Превью должно быть заполнено...');
+      triger = false;
+    }
+
+    if (formObject.mainText === '') {
+      toastr.warning('Список песен должно быть заполнено...');
+      triger = false;
+    }
+
+    if (formObject.ImgName === '') {
+      toastr.warning('Имя картинки альбома должно быть заполнено или по умолчанию...');
+      triger = false;
+    }
+
+    return triger;
+
+    function getFormData($form) {
+      var unindexedArray = $form.serializeArray();
+      var indexedArray = {};
+
+      $.map(unindexedArray, function (n, i) {
+          indexedArray[n['name']] = n['value'];
+      });
+
+      return indexedArray;
+    }
+  }
 })();

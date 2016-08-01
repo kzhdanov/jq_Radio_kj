@@ -123,7 +123,6 @@
 					var rating = new $.Rating();
 					rating._clean();
 					rating.hoverOn();
-
 				} catch (e) {
 					console.log(e);
 				}
@@ -209,7 +208,14 @@
 
 		setTitleInterval: function(interval) {
 			this.setTitleAjax();
-			intervalId = setInterval(this.setTitleAjax.bind(this), interval);
+			var _self = this;
+			setTimeout(function() {
+				if($('.js-group').text() !== '') {
+					intervalId = setInterval(_self.setTitleAjax.bind(_self), interval);
+				} else {
+					console.log('No available strim');
+				}
+			}, 20000);
 		},
 
 		setTitleAjax : function() {
@@ -232,18 +238,14 @@
 						}
 					} else {
 						toastr.error("Oh, something went wrong... Can't connect to stream.");
-						clearInterval(intervalId);
+						if (this.intervalId !== 0)
+							clearInterval(this.intervalId);
 					}
 				} else
 					toastr.error('Oh, something went wrong...');
 			}).fail(function(ex) {
 				toastr.error('Oh, something went wrong...');
 			});
-			setTimeout(function() {
-				if($('.js-group').text() === '') {
-						clearInterval(intervalId);
-				}
-			}, 30000)
 		}
 	};
 
