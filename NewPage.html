@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<style>
+  .need-more-minerals {
+    padding-bottom: 44px;
+    text-align: center;
+    clear: both;
+    }
+  .need-more-minerals span {
+    display: inline-block;
+
+    cursor: pointer;
+    -webkit-transform: translate3d(0, 0, 0);
+    }
+  .need-more-minerals span i {
+    display: block;
+    width: 44px; height: 44px;
+    margin: 0 0 20px 85px;
+    background: url(http://lamcdn.net/www.lookatme.ru/gui/11.sprite-dd0e53e498c6fd335a2772ab8e36f7149d158edcbfe34de2577660467b8276cf.png) 0 -14px;
+    }
+  .need-more-minerals span:hover {
+    color: #003cff;
+    }
+  @-webkit-keyframes rotation {
+    from { -webkit-transform:rotate(0deg); }
+    to { -webkit-transform:rotate(360deg); }
+    }
+  @-moz-keyframes rotation {
+    from { -moz-transform:rotate(0deg); }
+    to { -moz-transform:rotate(360deg); }
+    }
+  @keyframes rotation {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+    }
+  .need-more-minerals span:hover i {
+    -webkit-animation-name: rotation;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-animation-name: rotation;
+    -moz-animation-duration: .5s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease;
+    animation-name: rotation;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    background-position: -227px -60px;
+    }
+  .need-more-minerals span.loading i {
+    -webkit-animation-name: rotation!important;
+    -webkit-animation-duration: .5s!important;
+    -webkit-animation-iteration-count: infinite!important;
+    -webkit-animation-timing-function: linear!important;
+    -webkit-transform: translate3d(0, 0, 0)!important;
+    -moz-animation-name: rotation!important;
+    -moz-animation-duration: .5s!important;
+    -moz-animation-iteration-count: infinite!important;
+    -moz-animation-timing-function: linear!important;
+    animation-name: rotation!important;
+    animation-duration: .5s!important;
+    animation-iteration-count: infinite!important;
+    animation-timing-function: linear!important;
+    }
+  .need-more-minerals + .paginator {
+    -webkit-transform: translate3d(0, 0, 0)!important;
+    }
+</style>
+    <div class="need-more-minerals">
+      <span role="start_page:load_page">
+        <i></i>Показать предыдущую неделю - 29</span>
+      </div>
+</body>
+</html>
