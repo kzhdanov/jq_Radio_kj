@@ -211,13 +211,6 @@ footer {
 	flex-flow: row wrap;
 }
 
-.centerDiv {
-	justify-content: center;
-	flex-flow: nowrap;
-	margin: 1% 0 0 20%;
-	align-items: center;
-}
-
 .AlbumsDiv--Img {
 	width: 46%;
 	height: auto;
