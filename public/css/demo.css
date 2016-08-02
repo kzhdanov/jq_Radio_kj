@@ -232,7 +232,7 @@ footer {
 
 .AlbumsDiv_Info {
 	width: 48%;
-	height: 200px;
+	height: auto;
 	text-align: left;
 }
 

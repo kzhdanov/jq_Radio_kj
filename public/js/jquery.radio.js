@@ -203,7 +203,7 @@
 
 	$.Ajaxes = function	() {};
 	$.Ajaxes.prototype = {
-		url: 'http://192.168.1.4:10001/',
+		url: 'http://localhost:10001/',
 		intervalId: 0,
 
 		setTitleInterval: function(interval) {

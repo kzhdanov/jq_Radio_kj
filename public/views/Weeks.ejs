@@ -11,6 +11,7 @@
         <!--<link rel="shortcut icon" href="../favicon.ico">-->
         <link rel="stylesheet" type="text/css" href="./css/demo.css" />
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/getMore.css" />
         <link rel="stylesheet" type="text/css" href="./css/toastr.min.css" />
 		    <script type="text/javascript" src="./build/modernizr.custom.69142.js"></script>
     </head>
@@ -27,21 +28,7 @@
               </span>
                 <div class="clr"></div>
             </div>
-
-            <% for(var i=0; i<items.length; i++) {%>
-              <div class="AlbumsDiv">
-                <div class="AlbumsDiv--Img">
-                    <img src="<%= items[i].src %>"/>
-                </div>
-                <div class="AlbumsDiv_Info">
-                  <div class="AlbumsDiv--Title"><%= items[i].title %></div>
-                  <div class="AlbumsDiv--MiddleRating" title="Средний рейтинг альбома по оценкам слушателей">&#9733; <%= items[i].rate %></div>
-                  <div class="AlbumsDiv--Genres"><%= items[i].Genres %></div>
-                  <div class="AlbumsDiv--PrevText"><%= items[i].preView %></div>
-                </div>
-              </div>
-            <% } %>
-
+            <% include  /partials/WeeksPartial.ejs %>
         </div>
     <footer>
       <div class="email"></div>
