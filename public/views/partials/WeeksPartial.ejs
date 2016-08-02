@@ -1,5 +1,5 @@
 <div class="OneWeekContainer">
-  <div class="AlbumsDiv">
+  <div class="AlbumsDiv AlbumHeader">
       <div class="AlbumsDiv--Img">
         <h3><img src="../images/album.png"/>АЛЬБОМЫ <span class="WeekNumberOnHead"><%= weekNumber %></span> НЕДЕЛИ</h3>
       </div>
@@ -16,7 +16,7 @@
         <div class="AlbumsDiv--Title"><%= items[i].title %></div>
         <div class="AlbumsDiv--MiddleRating" title="Средний рейтинг альбома по оценкам слушателей">&#9733; <%= items[i].rate %></div>
         <div class="AlbumsDiv--Genres"><%= items[i].Genres %></div>
-        <div class="AlbumsDiv--PrevText"><%= items[i].preView %></div>
+        <div class="AlbumsDiv--PrevText"><%- items[i].preView.replace(new RegExp('\r?\n','g'), '<br />') %></div>
       </div>
     </div>
   <% } %>

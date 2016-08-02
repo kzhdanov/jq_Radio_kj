@@ -35,6 +35,12 @@
 		margin: 5px;
 		padding: 0;
 	}
+
+	.AlbumHeader {
+		margin: 5% 0 5% 0;
+		padding: 0;
+		font-size: .8em;
+	}
 }
 
 	/* Main container */
