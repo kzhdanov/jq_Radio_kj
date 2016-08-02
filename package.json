@@ -16,8 +16,6 @@
     "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-uglify": "^1.5.4",
-    "html": "0.0.10",
-    "icy": "^2.1.0",
     "mysql": "^2.11.1",
     "node-internet-radio": "^0.1.4",
     "querystring": "^0.2.0"
