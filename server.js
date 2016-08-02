@@ -87,7 +87,7 @@ app.get('/RadioAdmin/', auth, function (req, res) {
 app.post('/RadioAdmin/Get', auth, function (req, res) {
   album.GetAlbumsByWeekAll(req.body.week, function (err, al) {
     if (!err)
-      res.render('AdminPartial.ejs', { Albums: al });
+      res.render('./partials/AdminPartial.ejs', { Albums: al });
   });
 });
 
@@ -184,7 +184,7 @@ app.get('/weeks', function (req, res) {
             e.rate = 9;
           });
 
-          res.render('Weeks.ejs', { items: data });
+          res.render('Weeks.ejs', { items: data, weekNumber: weekNumber[0].Number.toString().substring(2), fullNumber: weekNumber[0].Number });
         }
       });
     });
@@ -204,6 +204,31 @@ app.post('/weeks/getNumber', function (req, res) {
     });
   } catch (e) {
     res.json({ type: 'error' });
+  }
+});
+
+///ТУТ ПОЛУЧАЕМ ПЕЙДЖИНГОМ СТРАНИЦЫ
+app.post('/weeks/getPrev', function (req, res) {
+  try {
+    if (req.body.week) {
+      album.GetAlbumsByWeekActive(req.body.week, function (err, data) {
+        if (!err) {
+          data.map(function (e, i) {
+            e.src = './TESTCovers/' + e.ImgName;
+            e.title = e.BandName + ' -  «' + e.AlbumName + '» ';
+            e.rate = 9;
+          });
+
+          res.render('./partials/WeeksPartial.ejs', { items: data, weekNumber: Number(req.body.week).toString().substring(2), fullNumber: Number(req.body.week) });
+        } else {
+          console.log(err);
+          res.render('./partials/WeeksPartial.ejs', { items: null });
+        }
+      });
+    }
+  } catch (e) {
+     console.log(e);
+      res.render('./partials/WeeksPartial.ejs', { items: null });
   }
 });
 

@@ -61,9 +61,8 @@
   animation-iteration-count: infinite!important;
   animation-timing-function: linear!important;
   }
-.need-more-minerals + .paginator {
-  -webkit-transform: translate3d(0, 0, 0)!important;
-  }
+
+  .OneWeekContainer {}
 
   .OneWeekContainer h3 {
     margin: 0;
