@@ -1,7 +1,7 @@
 <div class="OneWeekContainer">
   <div class="AlbumsDiv">
       <div class="AlbumsDiv--Img">
-        <h3><img src="../images/album.png"/>АЛЬБОМЫ <span class="WeekNumberOnHead"></span> НЕДЕЛИ</h3>
+        <h3><img src="../images/album.png"/>АЛЬБОМЫ <span class="WeekNumberOnHead"><%= weekNumber %></span> НЕДЕЛИ</h3>
       </div>
       <div class="AlbumsDiv_Info"></div>
     </div>
@@ -22,7 +22,10 @@
   <% } %>
 
   <div class="need-more-minerals">
-    <span role="start_page:load_page">
-      <i></i>Travel back in time to 29 week</span>
+    <span id="fullWeekNumber" style="display:none;"><%= fullNumber %></span>
+    <span role="start_page:load_page" onclick="GetPrevPage();">
+      <i></i>
+      Travel back in time to <%= weekNumber - 1 %> week
+    </span>
   </div>
 </div>

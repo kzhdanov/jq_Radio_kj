@@ -22,8 +22,6 @@ function EditClick(e, id) {
   $.ajax({
     method: 'POST',
     async: true,
-    cache: false,
-    crossDomain: false,
     data: { id: id },
     url: '/RadioAdmin/Edit',
   }).done(function (data) {
@@ -45,8 +43,6 @@ function DeleteClick(e, id) {
   $.ajax({
     method: 'POST',
     async: true,
-    cache: false,
-    crossDomain: false,
     data: { id: id },
     url: '/RadioAdmin/Delete',
   }).done(function (data) {
@@ -116,14 +112,13 @@ function DeleteClick(e, id) {
     $.ajax({
       method: 'POST',
       async: true,
-      cache: false,
-      crossDomain: false,
       data: { week: Number($('#WeekNumberSearch').val()) },
       url: '/RadioAdmin/Get',
     }).done(function (data) {
       _self.show();
       $('table tbody').empty().html(data);
     }).fail(function (ex) {
+      _self.show();
       toastr.error('Oh, something went wrong...');
     });
   });
