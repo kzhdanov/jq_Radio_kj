@@ -212,7 +212,7 @@ footer {
 }
 
 .AlbumsDiv--Img {
-	width: 46%;
+	width: 35%;
 	height: auto;
 	text-align: right;
 	padding: 0 2% 0 2%;
@@ -231,7 +231,7 @@ footer {
 }
 
 .AlbumsDiv_Info {
-	width: 48%;
+	width: 65%;
 	height: auto;
 	text-align: left;
 }
