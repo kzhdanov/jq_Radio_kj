@@ -184,7 +184,12 @@ app.get('/weeks', function (req, res) {
             e.rate = 9;
           });
 
-          res.render('Weeks.ejs', { items: data, weekNumber: weekNumber[0].Number.toString().substring(2), fullNumber: weekNumber[0].Number });
+          res.render('Weeks.ejs',
+          {
+            items: data,
+            weekNumber: weekNumber[0].Number.toString().substring(2),
+            fullNumber: weekNumber[0].Number,
+          });
         }
       });
     });

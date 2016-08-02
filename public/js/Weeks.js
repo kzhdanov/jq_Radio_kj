@@ -7,7 +7,7 @@ function GetPrevPage() {
   }).done(function (data) {
     if (data) {
       $('.need-more-minerals').remove();
-      $('.container').append(data);
+      $('.container').append('<hr />').append(data);
     } else {
       toastr.warning('Ошибка получения альбомов');
     }
