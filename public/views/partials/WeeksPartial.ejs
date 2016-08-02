@@ -1,0 +1,28 @@
+<div class="OneWeekContainer">
+  <div class="AlbumsDiv">
+      <div class="AlbumsDiv--Img">
+        <h3><img src="../images/album.png"/>АЛЬБОМЫ <span class="WeekNumberOnHead"></span> НЕДЕЛИ</h3>
+      </div>
+      <div class="AlbumsDiv_Info"></div>
+    </div>
+
+
+  <% for(var i=0; i<items.length; i++) {%>
+    <div class="AlbumsDiv">
+      <div class="AlbumsDiv--Img">
+          <img src="<%= items[i].src %>"/>
+      </div>
+      <div class="AlbumsDiv_Info">
+        <div class="AlbumsDiv--Title"><%= items[i].title %></div>
+        <div class="AlbumsDiv--MiddleRating" title="Средний рейтинг альбома по оценкам слушателей">&#9733; <%= items[i].rate %></div>
+        <div class="AlbumsDiv--Genres"><%= items[i].Genres %></div>
+        <div class="AlbumsDiv--PrevText"><%= items[i].preView %></div>
+      </div>
+    </div>
+  <% } %>
+
+  <div class="need-more-minerals">
+    <span role="start_page:load_page">
+      <i></i>Travel back in time to 29 week</span>
+  </div>
+</div>
