@@ -206,8 +206,8 @@ footer {
 
 .AlbumsDiv {
 	display: flex;
-	width: 60%;
-	margin: 2% 2% 2% 20%;
+	width: 70%;
+	margin: 2% 2% 2% 15%;
 	flex-flow: row wrap;
 }
 
