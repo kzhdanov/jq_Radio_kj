@@ -49,20 +49,22 @@ app.post('/', function (req, res) {
 });
 
 app.post('/Rating/Save', function (req, res) {
-  console.log('Start');
+  console.log('Rating Saving...');
+  var obj = req.body;
+
   rating.SaveRating({
-    id: '1',
-    autor: 'test',
-    song: 'song_test',
-    album: 'album_test',
+    id: utils.Guid(),
+    autor: obj.autor,
+    song: obj.song,
+    album: obj.album,
     dateCreate: new Date(),
-    rate: 9,
-    userTempId: '123456789012345678901234567890123456',
+    rate: obj.rate,
+    userTempId: obj.userTempId,
   }, function (error, data) {
     if (!error)
-      console.log(data);
+      res.send({ type: 'success' });
     else
-      console.log(error);
+      res.send({ type: 'error' });
   });
 });
 

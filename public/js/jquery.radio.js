@@ -156,12 +156,57 @@
 		ratintDiv: $('.Rating'),
 		ratings: $('.Rating li'),
 		ratingTitle: $('.Rating__Title'),
+		url: '/Rating/Save',
 
 		_init: function () {
-			var _self = this;
+			var _self = this,
+				  rndGuid = '';
+
 			_self.setOpacity(true);
 			this.ratings.click(function() {
 				_self.hoverOff();
+				try {
+					var key = localStorage.getItem('i@#4rv98*oo#a12N$_RadioKey');
+					if ( !key ) {
+						rndGuid = _self.randomGuid();
+						localStorage.setItem('i@#4rv98*oo#a12N$_RadioKey', rndGuid);
+						_self.saveRating(_self.buildRating.call({shortGuid: rndGuid, ratings: _self.ratings }));
+					} else {
+						_self.saveRating(_self.buildRating.call({shortGuid: key, ratings: _self.ratings }));
+					}
+				} catch (e) {
+					console.log(e);
+				}
+			});
+		},
+
+		buildRating: function () {
+			return {
+				autor: $.trim($('.songInfo__group').text()),
+				song: $.trim($('.songInfo__song').text()),
+				album: $.trim($('.songInfo__album').text()),
+				rate: [].slice.call(this.ratings).filter(function (i, e) {
+					 			return i.style['background-color'] !== 'transparent'
+							}).length,
+				userTempId: this.shortGuid,
+			}
+		},
+
+		saveRating: function ( obj ) {
+			$.ajax({
+				method: "POST",
+				async: true,
+				url: this.url,
+				data: obj,
+			}).fail(function(ex) {
+				console.log('Oh, something went wrong...');
+			});
+		},
+
+		randomGuid: function () {
+			  return 'xxxxxxxx-xxxx-4xxx'.replace(/[xy]/g, function(c) {
+			  var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+	      return v.toString(16);
 			});
 		},
 
@@ -203,7 +248,7 @@
 
 	$.Ajaxes = function	() {};
 	$.Ajaxes.prototype = {
-		url: 'http://localhost:10001/',
+		url: '/',
 		intervalId: 0,
 
 		setTitleInterval: function(interval) {

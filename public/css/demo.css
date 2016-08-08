@@ -139,9 +139,8 @@ footer {
 }
 
 .songInfo {
-		margin-top: 15px;
-	  font-size: 1.4em;
-    line-height: 20px;
+		margin-top: 35px;
+	  font-size: 1.2em;
     font-weight: bold;
     color: #444;
     text-overflow: ellipsis;
