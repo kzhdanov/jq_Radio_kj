@@ -49,6 +49,10 @@
 	.top {
 		font-size: .8em;
 	}
+
+	.songInfo {
+		margin-top: 15px;
+	}
 }
 
 @media screen and (max-width: 1280px) {

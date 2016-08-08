@@ -20,12 +20,12 @@
             <div id="dialog" class="window">
               <div class="top">
                 <span>Список песен в альбоме</span>
-                <a href="#" class="close" onclick="CloseModal(event)">Закрыть</a>
+                <a href="#" class="close" onclick="CloseModal(event)">&#215</a>
               </div>
               <div class="content"><%- items[i].mainText.replace(new RegExp('\r?\n','g'), '<br />') %></div>
             </div>
           </div>
-          
+
         </div>
         <div class="AlbumsDiv--MiddleRating" title="Средний рейтинг альбома по оценкам слушателей">&#9733; <%= items[i].rate %></div>
         <div class="AlbumsDiv--Genres"><%= items[i].Year %></div>

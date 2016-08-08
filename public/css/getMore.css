@@ -128,8 +128,8 @@
  .close {
    float:right;
    color: white;
-   font-size: .7em;
-   margin-right: -12px;
+   font-size: 1em;
+   margin-right: -8px;
  }
 
  .content {
