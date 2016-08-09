@@ -119,10 +119,8 @@
 					$( this ).off( 'canplay' );
 					_self.audio.currentTime = 0;
 					_self.audio.play();
-
 					var rating = new $.Rating();
-					rating._clean();
-					rating.hoverOn();
+					rating.SetRating();
 				} catch (e) {
 					console.log(e);
 				}
@@ -157,6 +155,7 @@
 		ratings: $('.Rating li'),
 		ratingTitle: $('.Rating__Title'),
 		url: '/Rating/Save',
+		key: 'i@#4rv98*oo#a12N$_RadioKey',
 
 		_init: function () {
 			var _self = this,
@@ -166,10 +165,10 @@
 			this.ratings.click(function() {
 				_self.hoverOff();
 				try {
-					var key = localStorage.getItem('i@#4rv98*oo#a12N$_RadioKey');
+					var key = localStorage.getItem(_self.key);
 					if ( !key ) {
 						rndGuid = _self.randomGuid();
-						localStorage.setItem('i@#4rv98*oo#a12N$_RadioKey', rndGuid);
+						localStorage.setItem(_self.key, rndGuid);
 						_self.saveRating(_self.buildRating.call({shortGuid: rndGuid, ratings: _self.ratings }));
 					} else {
 						_self.saveRating(_self.buildRating.call({shortGuid: key, ratings: _self.ratings }));
@@ -178,6 +177,27 @@
 					console.log(e);
 				}
 			});
+		},
+
+		SetRating: function () {
+			if ( !localStorage.getItem(this.key) ) {
+				rating._clean();
+				rating.hoverOn();
+			} else {
+				$.ajax({
+					method: "POST",
+					async: true,
+					url: '/Rating/Get',
+					data: { user: localStorage.getItem(this.key),
+									album: $.trim($('.js-album').text()),
+									group: $.trim($('.js-group').text()),
+								},
+				}).done( function (res) {
+					console.log(res);
+				}).fail(function(ex) {
+					console.log('Oh, something went wrong...');
+				});
+			}
 		},
 
 		buildRating: function () {
@@ -280,6 +300,10 @@
 							$('.js-group').empty().text(data.autor);
 							$('.js-song').empty().text(data.songName);
 							$('.js-album').empty().text(data.album);
+
+							var rating = new $.Rating();
+							rating._clean();
+							rating.hoverOn();
 						}
 					} else {
 						toastr.error("Oh, something went wrong... Can't connect to stream.");

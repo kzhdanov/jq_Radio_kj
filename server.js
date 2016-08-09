@@ -48,6 +48,19 @@ app.post('/', function (req, res) {
   });
 });
 
+///Проверим есть ли рейтинг и если есть то верн]м оценку
+app.post('/Rating/Get', function (req, res) {
+  var obj = req.body;
+
+  rating.GetRating(obj, function (error, data) {
+    if (!error)
+      res.send({ type: 'success', points: data });
+    else
+      res.send({ type: 'error' });
+  });
+});
+
+///Сохраним рейтинг
 app.post('/Rating/Save', function (req, res) {
   console.log('Rating Saving...');
   var obj = req.body;
