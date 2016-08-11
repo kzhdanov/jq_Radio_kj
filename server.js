@@ -53,9 +53,13 @@ app.post('/Rating/Get', function (req, res) {
   var obj = req.body;
 
   rating.GetRating(obj, function (error, data) {
-    if (!error)
-      res.send({ type: 'success', points: data });
-    else
+    if (!error) {
+      if (data[0] && data[0].rate) {
+        res.send({ type: 'success', points: data[0].rate });
+      } else {
+        res.send({ type: 'success', points: 0 });
+      }
+    } else
       res.send({ type: 'error' });
   });
 });

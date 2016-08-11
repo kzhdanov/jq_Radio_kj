@@ -121,6 +121,9 @@
 					_self.audio.play();
 					var rating = new $.Rating();
 					rating.SetRating();
+					rating.SetClick();
+					rating.hoverOn();
+					window.Play = true;
 				} catch (e) {
 					console.log(e);
 				}
@@ -158,12 +161,17 @@
 		key: 'i@#4rv98*oo#a12N$_RadioKey',
 
 		_init: function () {
-			var _self = this,
-				  rndGuid = '';
+			this.setOpacity(true);
+		},
 
-			_self.setOpacity(true);
+		SetClick: function () {
+			var _self = this,
+					rndGuid = '';
+
+			this.ratings.off('click');
 			this.ratings.click(function() {
 				_self.hoverOff();
+				_self.ratings.off('click');
 				try {
 					var key = localStorage.getItem(_self.key);
 					if ( !key ) {
@@ -180,9 +188,10 @@
 		},
 
 		SetRating: function () {
+			var _self = this;
 			if ( !localStorage.getItem(this.key) ) {
-				rating._clean();
-				rating.hoverOn();
+				_self._clean();
+				_self.hoverOn();
 			} else {
 				$.ajax({
 					method: "POST",
@@ -193,7 +202,14 @@
 									group: $.trim($('.js-group').text()),
 								},
 				}).done( function (res) {
-					console.log(res);
+					var i = 0;
+					if ( Number( res.points ) !== 0) {
+						for(;i<res.points;i+=1)	{
+							_self.ratings[i].style.backgroundColor = '#333';
+						}
+						_self.hoverOff();
+						_self.ratings.off('click');
+					}
 				}).fail(function(ex) {
 					console.log('Oh, something went wrong...');
 				});
@@ -303,7 +319,14 @@
 
 							var rating = new $.Rating();
 							rating._clean();
-							rating.hoverOn();
+							if (!window.Play) {
+								rating.hoverOff();
+							} else {
+								rating.hoverOn();
+								rating.ratings.off('click');
+								rating.ratings.click(rating.SetClick());
+								rating.SetRating();
+							}
 						}
 					} else {
 						toastr.error("Oh, something went wrong... Can't connect to stream.");
