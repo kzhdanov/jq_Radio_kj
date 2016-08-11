@@ -151,8 +151,11 @@ footer {
 
 .songInfo div {
 	min-height: 8px;
+	padding-top: 2px;
 }
-
+.songInfo__album {
+	font-size: .8em;
+}
 .songInfo__song {
 	 font-family: "Helveticaneuecyr Thin";
 		padding: 0 5px 5px 5px;

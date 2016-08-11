@@ -18,7 +18,7 @@ function BuildSongInfo(info) {
 }
 
 function BuildArray() {
-  return this.title.split(' ₽ ').map(function (item) { return item.trim(); });
+  return this.title.split('₽').map(function (item) { return item.trim(); });
 }
 
 Utils.TitleParcing = function () {
