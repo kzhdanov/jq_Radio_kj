@@ -138,15 +138,11 @@
 				this.sound.play( 'click' );
 			}
 			this.audio.pause();
-			this._clearSrc();
+			this._clear();
 		},
 
 		_clear: function() {
 			this.$audioEl.children( 'source' ).remove();
-		},
-
-		_clearSrc: function() {
-			this.audio.src = "";
 		},
 	};
 
