@@ -59,8 +59,10 @@ app.post('/Rating/Get', function (req, res) {
       } else {
         res.send({ type: 'success', points: 0 });
       }
-    } else
-      res.send({ type: 'error' });
+    } else {
+      console.log(error);
+      res.send({ type: 'error', error: error });
+    }
   });
 });
 
@@ -92,10 +94,16 @@ var auth = basicAuth('Ivan', 'EgorLetov@!');
 app.get('/RadioAdmin/', auth, function (req, res) {
   album.GetLastWeekNumber(null, function (err, weekNumber) {
     if (!err) {
-      album.GetAlbumsByWeekAll(weekNumber[0].Number, function (err, al) {
-        if (!err)
-          res.render('Admin.ejs', { Albums: al });
-      });
+      if (weekNumber[0].Number !== null) {
+        album.GetAlbumsByWeekAll(weekNumber[0].Number, function (err, al) {
+          if (!err)
+            res.render('Admin.ejs', { Albums: al });
+          else
+            console.log(err);
+        });
+      } else {
+        res.render('Admin.ejs', { Albums: null });
+      }
     } else {
       console.log(error);
     }
