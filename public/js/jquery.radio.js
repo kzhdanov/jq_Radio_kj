@@ -113,7 +113,7 @@
 		_play	: function() {
 			var _self	= this;
 			this._updateButtons( 'play' );
-			$.when( this.sound.play( 'click' ) ).done( function() {
+			//$.when( this.sound.play( 'click' ) ).done( function() {
 				try {
 					_self._prepare( _self.songs );
 					$( this ).off( 'canplay' );
@@ -127,7 +127,7 @@
 				} catch (e) {
 					console.log(e);
 				}
-			});
+			//});
 		},
 
 		_stop	: function( buttons ) {
@@ -135,7 +135,6 @@
 			rating.hoverOff();
 			if( !buttons ) {
 				this._updateButtons( 'stop' );
-				this.sound.play( 'click' );
 			}
 			this.audio.pause();
 			this._clear();

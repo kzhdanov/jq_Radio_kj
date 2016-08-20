@@ -2,16 +2,32 @@
 	ul.vc-controls {
 		width: 90% !important;
 	}
-
+	.codrops-top {
+		line-height: 40px;
+		font-size: 16px;
+	}
 	.vc-tape-wrapper{
-		width: 60% !important;
+		padding-top: 15px;
+		width: 70% !important;
 		height: auto !important;
 	}
 
-	.footerAbsolute {
-		position: relative;
+	footer {
+		display: block;
 	}
-
+	.email {
+		display: inline-block;
+		float: left;
+	}
+	.emailLink {
+		display: inline-block;
+		margin-top: 35px;
+	}
+	.emailLink a {
+		padding: 0;
+		margin: 0;
+		font-size: .7em;
+	}
 	.left {
 			display: none;
 	}
