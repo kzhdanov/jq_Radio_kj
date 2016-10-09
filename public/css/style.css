@@ -1,4 +1,4 @@
-@media screen and (max-device-width: 480px) {
+@media screen and (max-device-width: 520px) {
 	ul.vc-controls {
 		width: 90% !important;
 	}
@@ -7,11 +7,19 @@
 		font-size: 16px;
 	}
 	.vc-tape-wrapper{
-		padding-top: 15px;
-		width: 70% !important;
+		width: 100% !important;
 		height: auto !important;
 	}
-
+	.vc-tape-wrapper > img{
+		width: 320px !important;
+		height: 320px !important;
+		border: none !important;
+		padding: 0 !important;
+		border-radius: 0 !important;
+	}
+	.vc-container {
+		margin: 0 !important;
+	}
 	footer {
 		display: block;
 	}
@@ -21,7 +29,7 @@
 	}
 	.emailLink {
 		display: inline-block;
-		margin-top: 35px;
+		margin-top: 10px;
 	}
 	.emailLink a {
 		padding: 0;
@@ -45,7 +53,7 @@
 	}
 	.Rating {
 		padding: 0;
-		margin: 0;
+		margin-top: 45px !important;
 	}
 
 	.container > header {
@@ -67,7 +75,12 @@
 	}
 
 	.songInfo {
-		margin-top: 15px;
+		top: 220px;
+		left:50% !important;
+		margin-left:-160px !important;
+		width: 320px !important;
+		background-color: currentColor;
+		border-radius: 0 !important;
 	}
 }
 
