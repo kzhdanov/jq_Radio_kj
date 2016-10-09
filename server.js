@@ -38,7 +38,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   var self = res;
   var result;
-  internetradio.getStationInfo('http://178.236.141.243:8000/live', function (error, station) {
+  internetradio.getStationInfo('http://eu3.radioboss.fm:8013/live', function (error, station) {
     if (!error) {
       result = utils.TitleParcing.call(station);
       self.send(result);
