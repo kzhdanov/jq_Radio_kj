@@ -10,8 +10,8 @@
         <meta name="author" content="" />
         <link rel="icon" type="image/png" href="../images/favicon.ico" />
         <!--<link rel="shortcut icon" href="../favicon.ico">-->
-        <link rel="stylesheet" type="text/css" href="./css/demo.min.css" />
-        <link rel="stylesheet" type="text/css" href="./css/style.min.css" />
+        <link rel="stylesheet" type="text/css" href="./css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
 		    <link rel="stylesheet" type="text/css" href="./css/knobKnob.min.css" />
         <link rel="stylesheet" type="text/css" href="./css/toastr.min.css" />
     </head>
@@ -28,27 +28,18 @@
               </span>
                 <div class="clr"></div>
             </div>
-			<header>
-				<div class="support-note"><!-- let's check browser support with modernizr -->
-					<span class="no-cssanimations">CSS animations are not supported in your browser</span>
-					<span class="no-csstransforms">CSS transforms are not supported in your browser</span>
-					<span class="no-csstransforms3d">CSS 3D transforms are not supported in your browser</span>
-					<span class="no-csstransitions">CSS transitions are not supported in your browser</span>
-					<span class="note-ie">Sorry, only modern browsers.</span>
-				</div>
-			</header>
 
 			<div id="vc-container" class="vc-container">
 				<div class="vc-tape-wrapper">
           <img src="./images/cover.jpg" width="100%" height="100%"/>
 				</div>
-        <div>
-          <div class="songInfo">
-            <div class="js-group songInfo__group"></div>
-            <div class="js-song songInfo__song"></div>
-            <div class="js-album songInfo__album"></div>
-          </div>
+
+        <div class="songInfo">
+          <div class="js-group songInfo__group" style="color:white"></div>
+          <div class="js-song songInfo__song"></div>
+          <div class="js-album songInfo__album" style="color:white"></div>
         </div>
+
 				<div class="vc-loader"></div>
 			</div>
       <ul class="Rating">
@@ -63,7 +54,7 @@
         <li id="5">
         </li>
       </ul>
-      <br />
+
       <span class="Rating__Title">album rating</span>
 		</div>
     <footer>
