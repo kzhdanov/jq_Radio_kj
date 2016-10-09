@@ -7,7 +7,7 @@
 	$.Radio.defaults 	= {
 		fallbackMessage	: 'HTML5 audio not supported',
 		initialVolume	: 0.3,
-		url : "http://178.236.141.243:8000/live",
+		url : "http://eu3.radioboss.fm:8013/live",
 	};
 
 	$.Radio.prototype 	= {
@@ -281,6 +281,7 @@
 	$.Ajaxes.prototype = {
 		url: '/',
 		intervalId: 0,
+		urlImg: '/Images/GetCurrentImgUrl',
 
 		setTitleInterval: function(interval) {
 			this.setTitleAjax();
@@ -295,6 +296,7 @@
 		},
 
 		setTitleAjax : function() {
+			var _self = this;
 			$.ajax({
 				method: "POST",
 				async: true,
@@ -308,6 +310,7 @@
 								data.songName !== $.trim($('.js-song').text()) ||
 								data.album !== $.trim($('.js-album').text()))
 						{
+							_self.setImage(data);
 							$('.js-group').empty().text(data.autor);
 							$('.js-song').empty().text(data.songName);
 							$('.js-album').empty().text(data.album);
@@ -333,6 +336,17 @@
 			}).fail(function(ex) {
 				toastr.error('Oh, something went wrong...');
 			});
+		},
+
+		setImage: function (data) {
+			var img = new Image();
+			img.src = './RadioCovers/' + data.autor + '-' + data.album + '.jpg';
+			img.onload = function(){
+				$('.vc-tape-wrapper img').attr('src', img.src)
+			};
+			img.onerror = function(){
+				$('.vc-tape-wrapper img').attr('src', "./RadioCovers/img9.jpg")
+			};
 		}
 	};
 
