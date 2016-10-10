@@ -169,6 +169,24 @@ footer {
 		opacity: .8;
 }
 
+.songInfo::after {
+	content: "";
+	width: 60px;
+	height: 60px;
+	background: url(../images/vinil.png) no-repeat center center;
+	top: 20px;
+	right: 10px;
+	position: absolute;
+}
+.songInfo.animating::after {
+	-webkit-animation:spin 4s linear infinite;
+	-moz-animation:spin 4s linear infinite;
+	animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .songInfo div {
 	min-height: 8px;
 	padding-top: 2px;

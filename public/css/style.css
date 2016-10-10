@@ -154,7 +154,7 @@
 	ul.vc-controls{
 		list-style: none;
 		bottom: 18px;
-		margin: 40px auto;
+		margin: 35px auto;
 		background: -moz-linear-gradient(top, rgba(170,170,170,0.35) 0%, rgba(255,255,255,0.44) 50%, rgba(255,255,255,0.53) 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(170,170,170,0.35)), color-stop(50%,rgba(255,255,255,0.44)), color-stop(100%,rgba(255,255,255,0.53)));
 		background: -webkit-linear-gradient(top, rgba(170,170,170,0.35) 0%,rgba(255,255,255,0.44) 50%,rgba(255,255,255,0.53) 100%);
@@ -254,7 +254,7 @@
 
 	ul.vc-controls li.vc-control-active{
 		height: 50px;
-		margin-top: 2px;
+		/*margin-top: 2px;*/
 		background-image: url(../images/metal_dark.jpg);
 		box-shadow:
 			inset 0 0 0 1px rgba(0,0,0, 0.18),
@@ -262,14 +262,13 @@
 			inset 0 -6px 5px rgba(0,0,0,0.1),
 			0 6px 7px rgba(0,0,0,0.3),
 			0 2px 1px rgba(0,0,0,0.5);
-
 	}
 
 	ul.vc-controls li.vc-control-pressed,
 	ul.vc-controls li.vc-control-active.vc-control-pressed{
 		height: 50px;
 		background-image: url(../images/metal_dark.jpg);
-		margin-top: 4px;
+		/*margin-top: 4px;*/
 		box-shadow:
 			inset 0 0 0 1px rgba(0,0,0, 0.2),
 			inset 0 0 5px 1px rgba(255,255,255,0.5),
@@ -278,7 +277,7 @@
 	}
 
 	.vc-volume-wrap{
-		margin: -138px auto;
+		margin: -133px auto;
 		width: 100px;
 		height: 100px;
 		background: -moz-linear-gradient(top, rgba(170,170,170,0.35) 0%, rgba(255,255,255,0.44) 50%, rgba(255,255,255,0.53) 100%);
