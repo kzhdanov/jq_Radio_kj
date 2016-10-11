@@ -124,6 +124,7 @@
 					rating.SetClick();
 					rating.hoverOn();
 					window.Play = true;
+					$('.songInfo').after().addClass('animating');
 				} catch (e) {
 					console.log(e);
 				}
@@ -164,7 +165,6 @@
 			var _self = this,
 					rndGuid = '';
 
-			$('.songInfo').after().addClass('animating');
 			this.ratings.off('click');
 			this.ratings.click(function() {
 				_self.hoverOff();
