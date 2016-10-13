@@ -27,7 +27,7 @@
 
     _createPlay: function () {
 		var _self = this;
-    var song = new $.Song();
+    	var song = new $.Song();
 			$.when( song.loadMetadata() ).done( function( song ) {
 					_self.songs = song;
 			});
@@ -66,6 +66,7 @@
 					});
 					this.audio.volume = this.options.initialVolume;
 
+					var newWindow = new $.NewWindowPopUp();
 					var ajax = new $.Ajaxes();
 					ajax.setTitleInterval(5000);
 				}
@@ -146,6 +147,19 @@
 			this.$audioEl.children( 'source' ).remove();
 		},
 	};
+
+	$.NewWindowPopUp = function () {
+		this._init();
+	};
+	$.NewWindowPopUp.prototype = {
+		newWindowEl: $('.newWindow_link'),
+		_init: function () {
+			this.newWindowEl.click(function () {
+				window.open('/window/new',"RadioAvance.ru",
+					"width=480,height=260,scrollbars=no,status=yes")
+			});
+		},
+	}
 
 	$.Rating = function() {
 		this._init();
