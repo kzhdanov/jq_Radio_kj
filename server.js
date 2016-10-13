@@ -11,6 +11,7 @@ var pool = mysql.createPool(conf);
 var rating = require('./backend/Models/RatingModel')(pool);
 var album = require('./backend/Models/AlbumModel')(pool);
 var utils = require('./backend/Utils');
+var radioLink = 'http://eu3.radioboss.fm:8013/live';
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -38,7 +39,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   var self = res;
   var result;
-  internetradio.getStationInfo('http://eu3.radioboss.fm:8013/live', function (error, station) {
+  internetradio.getStationInfo(radioLink, function (error, station) {
     if (!error) {
       result = utils.TitleParcing.call(station);
       self.send(result);
@@ -262,6 +263,11 @@ app.post('/weeks/getPrev', function (req, res) {
      console.log(e);
       res.render('./partials/WeeksPartial.ejs', { items: null });
   }
+});
+
+//ТУТ ОТКРЫВАЕМ РАДИО В НОВОМ ОКНЕ
+app.get('/window/new', function (req, res) { 
+  res.render('./partials/WindowNew.ejs', { url: radioLink });
 });
 
 app.listen(10001, function () {

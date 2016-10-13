@@ -1,4 +1,5 @@
 @media screen and (max-device-width: 520px) {
+	.newWindow_link {display: none;}
 	ul.vc-controls {
 		width: 90% !important;
 	}
@@ -310,10 +311,25 @@
 	ul.vc-controls li,
 	.vc-volume-wrap:after{
 		font-family: 'Helveticaneuecyr Light';
-    font-size: 11px;
+    	font-size: 11px;
 		font-weight: 300;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		color: #666;
 		text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+	}
+	.newWindow_link {
+		position: absolute;
+	    top: 9px;
+	    margin-left: 279px;
+	    background-color: #444;
+	    opacity: 0.8;
+	    color: whitesmoke;
+	    padding: 5px 10px 5px 10px;
+	    border-radius: 0 20px 0 10px;
+	    height:30px;
+	}
+	.newWindow_link:hover {
+		opacity: 1;
+		cursor: pointer;
 	}

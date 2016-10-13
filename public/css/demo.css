@@ -192,19 +192,25 @@ footer {
 	min-height: 8px;
 	padding-top: 2px;
 }
+.songInfo__group {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 .songInfo__album {
 	font-size: .8em;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
-.songInfo__song {
-	 font-family: "Helveticaneuecyr Thin";
-		padding: 0 5px 5px 5px;
-	  font-size: .8em;
+.songInfo__song { 
+	font-family: "Helveticaneuecyr Thin";
+	padding: 0 5px 5px 5px;
+	font-size: .8em;
     color: #888;
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-		font-weight: normal;
+	font-weight: normal;
 }
 
 .Rating {
