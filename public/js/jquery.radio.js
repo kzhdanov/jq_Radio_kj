@@ -20,7 +20,6 @@
 			$.when( this._createPlay() ).done( function() {
 				_self.$loader.hide();
 				_self._createPlayer();
-				_self.sound = new $.Sound();
 				_self._loadEvents();
       });
     },
@@ -114,7 +113,7 @@
 		_play	: function() {
 			var _self	= this;
 			this._updateButtons( 'play' );
-			//$.when( this.sound.play( 'click' ) ).done( function() {
+
 				try {
 					_self._prepare( _self.songs );
 					$( this ).off( 'canplay' );
@@ -129,7 +128,7 @@
 				} catch (e) {
 					console.log(e);
 				}
-			//});
+
 		},
 
 		_stop	: function( buttons ) {
@@ -375,33 +374,6 @@
 			$tmpAudio.attr( 'src', 'sounds/click.mp3' );
 			$tmpAudio.on( 'loadedmetadata', function( event ) {
 				_self.duration = $tmpAudio.get(0).duration;
-			});
-		}
-	};
-
-	$.Sound	= function() {
-		this._init();
-	};
-	$.Sound.prototype		= {
-		_init	: function() {
-			this.$audio	= $( '<audio/>' ).attr( 'preload', 'auto' );
-		},
-		getSource	: function( type ) {
-			return 'sounds/' + this.action + '.' + type;
-		},
-		play : function( action, loop ) {
-			var _self = this;
-				  _self.action = action;
-		  var soundsrc = _self.getSource( 'mp3' );
-			_self.$audio.attr( 'src', soundsrc );
-			if( loop ) {
-				_self.$audio.attr( 'loop', loop );
-			}
-			else {
-				_self.$audio.removeAttr( 'loop' );
-			}
-			_self.$audio.on( 'canplay', function( event ) {
-				$( this ).get(0).play();
 			});
 		}
 	};

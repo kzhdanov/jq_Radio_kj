@@ -176,7 +176,7 @@ footer {
 	height: 60px;
 	background: url(../images/vinil.png) no-repeat center center;
 	top: 20px;
-	right: 10px;
+	right: 0;
 	position: absolute;
 }
 .songInfo.animating::after {
@@ -201,7 +201,7 @@ footer {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-.songInfo__song { 
+.songInfo__song {
 	font-family: "Helveticaneuecyr Thin";
 	padding: 0 5px 5px 5px;
 	font-size: .8em;
