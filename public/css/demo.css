@@ -98,7 +98,9 @@ a:hover{
 	margin: 2px 0 0 10px;
 }
 footer {
+	flex-wrap: wrap;
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	margin-top: -100px;
@@ -110,10 +112,90 @@ footer {
 	text-shadow: 0 1px 1px rgba(255,255,255,0.8);
 	font-weight: 400;
 	letter-spacing: 1px;
-
 	background: #fff;
 	background: rgba(255, 255, 255, 0.7);
 }
+.Vendors {
+	text-align: right;
+	position: relative;
+}
+.itun:hover::before, .win:hover::before,
+.wmp:hover::before, .real:hover::before,
+.quick:hover::before, .webP:hover::before{
+	transform: scale(1.2);
+}
+.quick, .webP, .real, .wmp, .itun, .win {
+	width: 120px;
+}
+.quick::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 -128px;
+	background-size: cover;
+	width: 30px;
+  height: 30px;
+  right: 0px;
+  margin: 0 20px 0 0;
+}
+.webP::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 -160px;
+	background-size: cover;
+	width: 30px;
+  height: 30px;
+  right: 0px;
+  margin: 0 20px 0 0;
+}
+.real::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 -96px;
+	background-size: cover;
+	width: 30px;
+	height: 30px;
+	right: 184px;
+}
+.wmp::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 -64px;
+	background-size: cover;
+	width: 30px;
+	height: 30px;
+	right: 184px;
+}
+.win::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 0;
+	background-size: cover;
+	width: 30px;
+	height: 30px;
+	right: 350px;
+}
+.itun::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 -32px;
+	background-size: cover;
+	width: 30px;
+	height: 30px;
+	right: 350px;
+}
+.emailLink {
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.emailLink a {
+	margin: 14px 0 0 50px;
+  display: inline-block;
+	font-size: .9em;
+	font-weight: bold;
+	color: #444;
+	font-family: "Helveticaneuecyr Light";
+}
+.emailLink a:hover { color: green; }
 .email {
 	background: url(../images/email.png) no-repeat center center;
 	width: 38px;
@@ -122,67 +204,6 @@ footer {
 	opacity: .4;
 	margin: 0 6px 0 8px;
 }
-.Vendors {
-	text-align: right;
-  width: 60%;
-  padding-right: 50px;
-	position: relative;
-}
-.win::before {
-	content: '';
-	position: absolute;
-	background: url(../images/Venders.png) no-repeat 0 0;
-	background-size: cover;
-	width: 26px;
-  height: 27px;
-  right: 225px;
-  margin: 2px 20px 0 0;
-}
-.itun::before {
-	content: '';
-	position: absolute;
-	background: url(../images/Venders.png) no-repeat 0 -28px;
-	background-size: cover;
-	width: 26px;
-  height: 26px;
-  right: 225px;
-  margin: 2px 20px 0 0;
-}
-.itun:hover::before, .win:hover::before, .wmp:hover::before, .real:hover::before{
-	transform: scale(1.2);
-}
-.wmp::before {
-	content: '';
-	position: absolute;
-	background: url(../images/Venders.png) no-repeat 0 -55px;
-	background-size: cover;
-	width: 26px;
-  height: 26px;
-  right: 0px;
-  margin: 2px 20px 0 0;
-}
-.real::before {
-	content: '';
-	position: absolute;
-	background: url(../images/Venders.png) no-repeat 0 -83px;
-	background-size: cover;
-	width: 26px;
-  height: 26px;
-  right: 0px;
-  margin: 2px 20px 0 0;
-}
-.emailLink {
-	text-transform: uppercase;
-	cursor: pointer;
-}
-
-.emailLink a {
-	font-size: .9em;
-	font-weight: bold;
-	color: #444;
-	font-family: "Helveticaneuecyr Light";
-}
-
 .support-note span{
 	color: #ac375d;
 	font-size: 16px;
@@ -364,9 +385,10 @@ footer {
 footer ul {
 	list-style-type: none;
 	display: inline-block;
+	margin: 0;
 }
 footer li {
-	line-height: 2em;
+	line-height: 2.4em;
 	cursor: pointer;
 }
 footer li:hover {
