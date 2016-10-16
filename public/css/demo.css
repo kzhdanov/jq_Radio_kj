@@ -38,7 +38,7 @@ a:hover{
   text-align: center;
 	box-sizing: border-box;
   min-height: 100%;
-  padding-bottom: 50px;
+  padding-bottom: 110px;
 }
 .clr{
 	clear: both;
@@ -101,8 +101,8 @@ footer {
 	display: flex;
 	align-items: center;
 	width: 100%;
-	margin-top: -40px;
-	height: 40px;
+	margin-top: -100px;
+	height: 100px;
 	opacity: .4;
 	text-align: center;
 	border-top: 2px solid #ADB4BC;
@@ -122,7 +122,55 @@ footer {
 	opacity: .4;
 	margin: 0 6px 0 8px;
 }
-
+.Vendors {
+	text-align: right;
+  width: 60%;
+  padding-right: 50px;
+	position: relative;
+}
+.win::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 0;
+	background-size: cover;
+	width: 26px;
+  height: 27px;
+  right: 225px;
+  margin: 2px 20px 0 0;
+}
+.itun::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 -28px;
+	background-size: cover;
+	width: 26px;
+  height: 26px;
+  right: 225px;
+  margin: 2px 20px 0 0;
+}
+.itun:hover::before, .win:hover::before, .wmp:hover::before, .real:hover::before{
+	transform: scale(1.2);
+}
+.wmp::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 -55px;
+	background-size: cover;
+	width: 26px;
+  height: 26px;
+  right: 0px;
+  margin: 2px 20px 0 0;
+}
+.real::before {
+	content: '';
+	position: absolute;
+	background: url(../images/Venders.png) no-repeat 0 -83px;
+	background-size: cover;
+	width: 26px;
+  height: 26px;
+  right: 0px;
+  margin: 2px 20px 0 0;
+}
 .emailLink {
 	text-transform: uppercase;
 	cursor: pointer;
@@ -312,4 +360,15 @@ footer {
 .AlbumsDiv--Genres {
 	display: inline-block;
 	width: 100%;
+}
+footer ul {
+	list-style-type: none;
+	display: inline-block;
+}
+footer li {
+	line-height: 2em;
+	cursor: pointer;
+}
+footer li:hover {
+	color: green;
 }
