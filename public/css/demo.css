@@ -123,6 +123,7 @@ footer {
 .wmp:hover::before, .real:hover::before,
 .quick:hover::before, .webP:hover::before{
 	transform: scale(1.2);
+	transition-duration: .4s;
 }
 .quick, .webP, .real, .wmp, .itun, .win {
 	width: 120px;

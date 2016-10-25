@@ -22,11 +22,11 @@
 		margin: 0 !important;
 	}
 	footer {
-		display: block;
+		/*display: block;*/
 	}
 	.email {
 		display: inline-block;
-		float: left;
+		position: relative;
 	}
 	.emailLink {
 		display: inline-block;
@@ -36,6 +36,9 @@
 		padding: 0;
 		margin: 0;
 		font-size: .7em;
+		position: absolute;
+		left: 50px;
+		bottom: 12px;
 	}
 	.left {
 			display: none;
@@ -83,6 +86,8 @@
 		background-color: currentColor;
 		border-radius: 0 !important;
 	}
+
+	.Vendors {display: none;}
 }
 
 @media screen and (max-width: 1280px) {

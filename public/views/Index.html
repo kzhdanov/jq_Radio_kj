@@ -90,7 +90,29 @@
   <script type="text/javascript">
     $(function () {
       $('#vc-container').radio();
-
+      
+      $('.Vendors li').click(function () {
+        switch($(this).attr('class')) {
+          case 'win': 
+            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.pls", "_blank"); 
+            break;
+          case 'itun': 
+            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.pls", "_blank"); 
+            break;
+          case 'wmp':
+            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.asx", "_blank"); 
+            break;
+          case 'real':
+            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.ram", "_blank"); 
+            break;
+          case 'quick':
+            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.qtl", "_blank"); 
+            break;
+          case 'webP':
+            window.open("http://eu3.radioboss.fm/stream/ge7byhhyt.pls?mp=/stream", "_blank"); 
+            break;
+        }
+      })
       $('audio').on('error', function (e) {
         /*
         switch (e.target.error.code) {
