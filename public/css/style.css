@@ -22,7 +22,7 @@
 		margin: 0 !important;
 	}
 	footer {
-		/*display: block;*/
+		height: 100px;
 	}
 	.email {
 		display: inline-block;
@@ -35,10 +35,19 @@
 	.emailLink a {
 		padding: 0;
 		margin: 0;
-		font-size: .7em;
+		font-size: 1em;
 		position: absolute;
 		left: 50px;
-		bottom: 12px;
+		bottom: -2px;
+	}
+	.wmp::before, .win::before,  .itun::before {
+		display: none;
+	}
+	.win {
+		padding-left: 14px;
+	}
+	.itun {
+    	padding-right: 14px;
 	}
 	.left {
 			display: none;
@@ -87,10 +96,19 @@
 		border-radius: 0 !important;
 	}
 
-	.Vendors {display: none;}
+	.spacer {width: 100% !important;}
+}
+
+@media screen and (max-device-width: 1350px) {
+	.spacer {
+		width: 60%;
+	}
 }
 
 @media screen and (max-width: 1280px) {
+	.spacer {
+		width: 56%;
+	}
 	.AlbumsDiv {
 		width: 90%;
 		margin: 2% 5% 2% 5%;
@@ -98,6 +116,9 @@
 }
 
 @media screen and (max-width: 1024px) {
+	.spacer {
+		width: 30%;
+	}
 	.AlbumsDiv {
 		width: 90%;
 		margin: 2% 5% 2% 5%;
@@ -160,7 +181,7 @@
 	ul.vc-controls{
 		list-style: none;
 		bottom: 18px;
-		margin: 35px auto;
+		margin: 42px auto;
 		background: -moz-linear-gradient(top, rgba(170,170,170,0.35) 0%, rgba(255,255,255,0.44) 50%, rgba(255,255,255,0.53) 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(170,170,170,0.35)), color-stop(50%,rgba(255,255,255,0.44)), color-stop(100%,rgba(255,255,255,0.53)));
 		background: -webkit-linear-gradient(top, rgba(170,170,170,0.35) 0%,rgba(255,255,255,0.44) 50%,rgba(255,255,255,0.53) 100%);
@@ -283,7 +304,7 @@
 	}
 
 	.vc-volume-wrap{
-		margin: -133px auto;
+		margin: -141px auto;
 		width: 100px;
 		height: 100px;
 		background: -moz-linear-gradient(top, rgba(170,170,170,0.35) 0%, rgba(255,255,255,0.44) 50%, rgba(255,255,255,0.53) 100%);

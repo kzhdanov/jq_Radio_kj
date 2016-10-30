@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
 ///ГЛАВНАЯ РАДИО///
 ///ГЛАВНАЯ
 app.get('/', function (req, res) {
-  res.render('Index');
+  res.render('Index.ejs');
 });
 
 ///ТУТ БЕР[Е]М ЗАГОЛОВКИ
@@ -69,7 +69,6 @@ app.post('/Rating/Get', function (req, res) {
 
 ///Сохраним рейтинг
 app.post('/Rating/Save', function (req, res) {
-  console.log('Rating Saving...');
   var obj = req.body;
 
   rating.SaveRating({

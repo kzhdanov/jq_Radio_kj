@@ -38,7 +38,7 @@ a:hover{
   text-align: center;
 	box-sizing: border-box;
   min-height: 100%;
-  padding-bottom: 110px;
+  padding-bottom: 60px;
 }
 .clr{
 	clear: both;
@@ -103,9 +103,9 @@ footer {
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	margin-top: -100px;
-	height: 100px;
-	opacity: .4;
+	margin-top: -50px;
+	height: 50px;
+	/*opacity: .4;*/
 	text-align: center;
 	border-top: 2px solid #ADB4BC;
 	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
@@ -115,47 +115,20 @@ footer {
 	background: #fff;
 	background: rgba(255, 255, 255, 0.7);
 }
-.Vendors {
-	text-align: right;
-	position: relative;
-}
 .itun:hover::before, .win:hover::before,
-.wmp:hover::before, .real:hover::before,
-.quick:hover::before, .webP:hover::before{
+.wmp:hover::before {
 	transform: scale(1.2);
 	transition-duration: .4s;
 }
-.quick, .webP, .real, .wmp, .itun, .win {
-	width: 120px;
+.wmp, .itun, .win {
+	min-width: 60px;
+	position: relative;
 }
-.quick::before {
-	content: '';
-	position: absolute;
-	background: url(../images/Venders.png) no-repeat 0 -128px;
-	background-size: cover;
-	width: 30px;
-  height: 30px;
-  right: 0px;
-  margin: 0 20px 0 0;
+.spacer { 
+	width:66%; 
 }
-.webP::before {
-	content: '';
-	position: absolute;
-	background: url(../images/Venders.png) no-repeat 0 -160px;
-	background-size: cover;
-	width: 30px;
-  height: 30px;
-  right: 0px;
-  margin: 0 20px 0 0;
-}
-.real::before {
-	content: '';
-	position: absolute;
-	background: url(../images/Venders.png) no-repeat 0 -96px;
-	background-size: cover;
-	width: 30px;
-	height: 30px;
-	right: 184px;
+.itun {
+	padding-right: 26px;
 }
 .wmp::before {
 	content: '';
@@ -163,8 +136,9 @@ footer {
 	background: url(../images/Venders.png) no-repeat 0 -64px;
 	background-size: cover;
 	width: 30px;
-	height: 30px;
-	right: 184px;
+	height: 31px;
+	left: -40px;
+	bottom: 4px;
 }
 .win::before {
 	content: '';
@@ -172,8 +146,9 @@ footer {
 	background: url(../images/Venders.png) no-repeat 0 0;
 	background-size: cover;
 	width: 30px;
-	height: 30px;
-	right: 350px;
+	height: 31px;
+	left: -36px;
+	bottom: 4px;
 }
 .itun::before {
 	content: '';
@@ -181,16 +156,18 @@ footer {
 	background: url(../images/Venders.png) no-repeat 0 -32px;
 	background-size: cover;
 	width: 30px;
-	height: 30px;
-	right: 350px;
+	height: 31px;
+	left: -36px;
+	bottom: 4px;
 }
 .emailLink {
 	text-transform: uppercase;
 	cursor: pointer;
 }
 .emailLink a {
-	margin: 14px 0 0 50px;
-  display: inline-block;
+	position: absolute;
+    left: 50px;
+    bottom: 0;
 	font-size: .9em;
 	font-weight: bold;
 	color: #444;
@@ -204,6 +181,7 @@ footer {
 	background-size: cover;
 	opacity: .4;
 	margin: 0 6px 0 8px;
+	position: relative;
 }
 .support-note span{
 	color: #ac375d;
@@ -291,7 +269,7 @@ footer {
 	padding: 0;
 	margin: 0;
 	opacity: .3;
-	padding-top: 50px;
+	padding-top: 54px;
 }
 
 .Rating li {
@@ -383,15 +361,10 @@ footer {
 	display: inline-block;
 	width: 100%;
 }
-footer ul {
-	list-style-type: none;
-	display: inline-block;
-	margin: 0;
-}
-footer li {
+footer a {
 	line-height: 2.4em;
 	cursor: pointer;
 }
-footer li:hover {
+footer a:hover {
 	color: green;
 }

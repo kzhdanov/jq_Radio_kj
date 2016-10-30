@@ -58,27 +58,8 @@
 
       <span class="Rating__Title">album rating</span>
 		</div>
-    <footer>
-
-      <div class="emailLink">
-        <div class="email"><a href="mailto:radioavance@hotmail.com">radioavance@hotmail.com</a></div>
-
-      </div>
-      <div class='Vendors'>
-        <ul>
-          <li class="win">Winamp</li>
-          <li class="itun">iTunes</li>
-        </ul>
-        <ul>
-          <li class="wmp">WMP</li>
-          <li class="real">Real Player</li>
-        </ul>
-        <ul style="margin-right: 56px;">
-          <li class="quick">QuickTime</li>
-          <li class="webP">Web Proxy</li>
-        </ul>
-      </div>
-    </footer>
+    
+    <% include  ./partials/Footer.ejs %>
 
     <script src="../js/minify/jquery3.0.0.min.js" type="text/javascript"></script>
     <script src="../js/minify/toastr.min.js" type="text/javascript"></script>
@@ -90,29 +71,7 @@
   <script type="text/javascript">
     $(function () {
       $('#vc-container').radio();
-      
-      $('.Vendors li').click(function () {
-        switch($(this).attr('class')) {
-          case 'win': 
-            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.pls", "_blank"); 
-            break;
-          case 'itun': 
-            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.pls", "_blank"); 
-            break;
-          case 'wmp':
-            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.asx", "_blank"); 
-            break;
-          case 'real':
-            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.ram", "_blank"); 
-            break;
-          case 'quick':
-            window.open("https://eu3.radioboss.fm:2199/tunein/ge7byhhyt.qtl", "_blank"); 
-            break;
-          case 'webP':
-            window.open("http://eu3.radioboss.fm/stream/ge7byhhyt.pls?mp=/stream", "_blank"); 
-            break;
-        }
-      })
+
       $('audio').on('error', function (e) {
         /*
         switch (e.target.error.code) {
