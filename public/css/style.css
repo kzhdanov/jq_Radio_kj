@@ -25,17 +25,14 @@
 		height: 100px;
 	}
 	.email {
-		display: inline-block;
 		position: relative;
 	}
 	.emailLink {
-		display: inline-block;
 		margin-top: 10px;
 	}
 	.emailLink a {
 		padding: 0;
 		margin: 0;
-		font-size: 1em;
 		position: absolute;
 		left: 50px;
 		bottom: -2px;
@@ -50,7 +47,7 @@
     	padding-right: 14px;
 	}
 	.left {
-			display: none;
+		display: none;
 	}
 
 	.AlbumsDiv {
