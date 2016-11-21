@@ -7,7 +7,7 @@
 	$.Radio.defaults 	= {
 		fallbackMessage	: 'HTML5 audio not supported',
 		initialVolume	: 0.3,
-		url : "http://eu3.radioboss.fm:8013/live",
+		url : "http://eu3.radioboss.fm:8022/live",
 	};
 
 	$.Radio.prototype 	= {

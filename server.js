@@ -11,7 +11,7 @@ var pool = mysql.createPool(conf);
 var rating = require('./backend/Models/RatingModel')(pool);
 var album = require('./backend/Models/AlbumModel')(pool);
 var utils = require('./backend/Utils');
-var radioLink = 'http://eu3.radioboss.fm:8013/live';
+var radioLink = 'http://eu3.radioboss.fm:8022/live';
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
