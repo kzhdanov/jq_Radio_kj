@@ -3,7 +3,6 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var qs = require('querystring');
-var internetradio = require('node-internet-radio');
 var basicAuth = require('basic-auth-connect');
 var mysql = require('mysql');
 var conf = require('./backend/config');
@@ -12,6 +11,8 @@ var rating = require('./backend/Models/RatingModel')(pool);
 var album = require('./backend/Models/AlbumModel')(pool);
 var utils = require('./backend/Utils');
 var radioLink = 'http://eu3.radioboss.fm:8022/live';
+var ws = require('./backend/ws');
+var compression = require('compression');
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -19,6 +20,7 @@ app.set('views', __dirname + '/public/views');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(compression());
 app.use(express.static(__dirname + '/public'));
 
 app.use(function (req, res, next) {
@@ -29,24 +31,13 @@ app.use(function (req, res, next) {
   next();
 });
 
+///ПОДКЛЮЧИМ WS///
+ws.Start();
+
 ///ГЛАВНАЯ РАДИО///
 ///ГЛАВНАЯ
 app.get('/', function (req, res) {
   res.render('Index.ejs');
-});
-
-///ТУТ БЕР[Е]М ЗАГОЛОВКИ
-app.post('/', function (req, res) {
-  var self = res;
-  var result;
-  internetradio.getStationInfo(radioLink, function (error, station) {
-    if (!error) {
-      result = utils.TitleParcing.call(station);
-      self.send(result);
-    } else {
-      self.send({ type: 'error' });
-    }
-  });
 });
 
 ///Проверим есть ли рейтинг и если есть то верн]м оценку
@@ -265,10 +256,10 @@ app.post('/weeks/getPrev', function (req, res) {
 });
 
 //ТУТ ОТКРЫВАЕМ РАДИО В НОВОМ ОКНЕ
-app.get('/window/new', function (req, res) { 
+app.get('/window/new', function (req, res) {
   res.render('./partials/WindowNew.ejs', { url: radioLink });
 });
 
-app.listen(10001, function () {
-  console.log('Server successfully started on 10001 port');
+app.listen(8081, function () {
+  console.log('Server successfully started on 8081 port');
 });

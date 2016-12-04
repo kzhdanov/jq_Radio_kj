@@ -8,10 +8,11 @@
 		fallbackMessage	: 'HTML5 audio not supported',
 		initialVolume	: 0.3,
 		url : "http://eu3.radioboss.fm:8022/live",
+		ws : "ws://92.61.68.163:8080",
 	};
 
 	$.Radio.prototype 	= {
-		_init	: function( options ) {
+		_init : function( options ) {
 			var _self = this;
 			this.options	= $.extend( true, {}, $.Radio.defaults, options );
 			this.songs = '';
@@ -21,10 +22,36 @@
 				_self.$loader.hide();
 				_self._createPlayer();
 				_self._loadEvents();
-      });
-    },
+      		});
 
-    _createPlay: function () {
+      		var ws = new WebSocket ($.Radio.defaults.ws);
+		    ws.onmessage = (function (message) {
+		      var res = JSON.parse(message.data);
+
+		      if(res.album != 'no name' && res.songName != 'no name')
+		      	res.imgSrc = './RadioCovers/' + res.autor + '-' + res.album + '.jpg';
+		      else 
+		      	res.imgSrc = './RadioCovers/Avance.jpg';
+			  
+			  $('.js-group').text(res.autor); 
+			  $('.js-album').text(res.album); 
+			  $('.js-song').text(res.songName); 
+			  $('.js-image').attr('src', res.imgSrc);
+
+			  var rating = new $.Rating();
+				  rating._clean();
+				  if (!window.Play) {
+				  	rating.hoverOff();
+				  } else {
+					rating.hoverOn();
+					rating.ratings.off('click');
+					rating.ratings.click(rating.SetClick());
+					rating.SetRating();
+				  } 
+		    });
+    	},
+
+    _createPlay : function () {
 		var _self = this;
     	var song = new $.Song();
 			$.when( song.loadMetadata() ).done( function( song ) {
@@ -66,8 +93,6 @@
 					this.audio.volume = this.options.initialVolume;
 
 					var newWindow = new $.NewWindowPopUp();
-					var ajax = new $.Ajaxes();
-					ajax.setTitleInterval(5000);
 				}
 			}
 		},
@@ -291,79 +316,6 @@
 			this.ratings.off("mouseenter mouseleave");
 		},
 	}
-
-	$.Ajaxes = function	() {};
-	$.Ajaxes.prototype = {
-		url: '/',
-		intervalId: 0,
-		urlImg: '/Images/GetCurrentImgUrl',
-
-		setTitleInterval: function(interval) {
-			this.setTitleAjax();
-			var _self = this;
-			setTimeout(function() {
-				if($('.js-group').text() !== '') {
-					intervalId = setInterval(_self.setTitleAjax.bind(_self), interval);
-				} else {
-					console.log('No available strim');
-				}
-			}, 20000);
-		},
-
-		setTitleAjax : function() {
-			var _self = this;
-			$.ajax({
-				method: "POST",
-				async: true,
-				cache: false,
-				crossDomain: false,
-				url: this.url,
-			}).done(function(data) {
-				if(data) {
-					if(data.type !== 'error') {
-						if( data.autor !== $.trim($('.js-group').text()) ||
-								data.songName !== $.trim($('.js-song').text()) ||
-								data.album !== $.trim($('.js-album').text()))
-						{
-							_self.setImage(data);
-							$('.js-group').empty().text(data.autor);
-							$('.js-song').empty().text(data.songName);
-							$('.js-album').empty().text(data.album);
-
-							var rating = new $.Rating();
-							rating._clean();
-							if (!window.Play) {
-								rating.hoverOff();
-							} else {
-								rating.hoverOn();
-								rating.ratings.off('click');
-								rating.ratings.click(rating.SetClick());
-								rating.SetRating();
-							}
-						}
-					} else {
-						toastr.error("Oh, something went wrong... Can't connect to stream.");
-						if (this.intervalId !== 0)
-							clearInterval(this.intervalId);
-					}
-				} else
-					toastr.error('Oh, something went wrong...');
-			}).fail(function(ex) {
-				toastr.error('Oh, something went wrong...');
-			});
-		},
-
-		setImage: function (data) {
-			var img = new Image();
-			img.src = './RadioCovers/' + data.autor + '-' + data.album + '.jpg';
-			img.onload = function(){
-				$('.vc-tape-wrapper img').attr('src', img.src)
-			};
-			img.onerror = function(){
-				$('.vc-tape-wrapper img').attr('src', "./RadioCovers/Avance.jpg")
-			};
-		}
-	};
 
 	$.Song = function() {};
 	$.Song.prototype 	= {
