@@ -16,5 +16,9 @@
     "mysql": "^2.11.1",
     "node-internet-radio": "^0.1.4",
     "querystring": "^0.2.0"
+  },
+  "dependencies": {
+    "compression": "^1.6.2",
+    "ws": "^1.1.1"
   }
 }

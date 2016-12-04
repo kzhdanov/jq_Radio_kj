@@ -1,5 +1,5 @@
 
-@import url('normalize.css');
+@import url('normalize.min.css');
 /* Icon font for player controls */
 @font-face {
 	font-family: 'playericons';
@@ -124,8 +124,8 @@ footer {
 	min-width: 60px;
 	position: relative;
 }
-.spacer { 
-	width:66%; 
+.spacer {
+	width:66%;
 }
 .itun {
 	padding-right: 26px;
