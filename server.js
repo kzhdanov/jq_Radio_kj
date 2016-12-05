@@ -242,7 +242,9 @@ app.post('/weeks/getPrev', function (req, res) {
             e.rate = 9;
           });
 
-          res.render('./partials/WeeksPartial.ejs', { items: data, weekNumber: Number(req.body.week).toString().substring(2), fullNumber: Number(req.body.week) });
+          res.render('./partials/WeeksPartial.ejs', { items: data,
+            weekNumber: Number(req.body.week).toString().substring(2),
+            fullNumber: Number(req.body.week), });
         } else {
           console.log(err);
           res.render('./partials/WeeksPartial.ejs', { items: null });
@@ -250,8 +252,8 @@ app.post('/weeks/getPrev', function (req, res) {
       });
     }
   } catch (e) {
-     console.log(e);
-      res.render('./partials/WeeksPartial.ejs', { items: null });
+    console.log(e);
+    res.render('./partials/WeeksPartial.ejs', { items: null });
   }
 });
 

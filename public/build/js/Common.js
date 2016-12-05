@@ -1,0 +1,1 @@
+!function(){$.ajax({method:"POST",async:!0,url:"/weeks/getNumber"}).done(function(e){"success"===e.type&&$(".WeekNumberOnHead").text(e.number)})}();

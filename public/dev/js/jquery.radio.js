@@ -23,30 +23,30 @@
 
       var ws = new WebSocket ($.Radio.defaults.ws);
 		  		ws.onmessage = (function (message) {
-		  			var res = JSON.parse(message.data);
+		  var res = JSON.parse(message.data);
 
-			      if(res.album != 'no name' && res.songName != 'no name')
-			      	res.imgSrc = './RadioCovers/' + res.autor + '-' + res.album + '.jpg';
-			      else
-			      	res.imgSrc = './RadioCovers/Avance.jpg';
+		      if(res.album != 'no name' && res.songName != 'no name')
+		      	res.imgSrc = './RadioCovers/' + res.autor + '-' + res.album + '.jpg';
+		      else
+		      	res.imgSrc = './RadioCovers/Avance.jpg';
 
-					  $('.js-group').text(res.autor);
-					  $('.js-album').text(res.album);
-					  $('.js-song').text(res.songName);
-					  $('.js-image').attr('src', res.imgSrc);
+			  $('.js-group').text(res.autor);
+			  $('.js-album').text(res.album);
+			  $('.js-song').text(res.songName);
+			  $('.js-image').attr('src', res.imgSrc);
 
-					  var rating = new $.Rating();
-						  rating._clean();
-						  if (!window.Play) {
-						  	rating.hoverOff();
-						  } else {
-								rating.hoverOn();
-								rating.ratings.off('click');
-								rating.ratings.click(rating.SetClick());
-								rating.SetRating();
-						  }
-		     });
-    },
+			  var rating = new $.Rating();
+				  rating._clean();
+				  if (!window.Play) {
+				  	rating.hoverOff();
+				  } else {
+					rating.hoverOn();
+					rating.ratings.off('click');
+					rating.ratings.click(rating.SetClick());
+					rating.SetRating();
+				  }
+		    });
+    	},
 
 		_createPlayer	: function() {
 			this.$audioEl	= $( '<audio id="audioElem"><span>' + this.options.fallbackMessage + '</span></audio>' );
