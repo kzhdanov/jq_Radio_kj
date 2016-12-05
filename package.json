@@ -13,6 +13,10 @@
     "body-parser": "^1.15.2",
     "ejs": "^2.5.1",
     "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.11",
     "mysql": "^2.11.1",
     "node-internet-radio": "^0.1.4",
     "querystring": "^0.2.0"

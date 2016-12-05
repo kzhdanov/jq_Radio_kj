@@ -13,7 +13,7 @@
   display: block;
   width: 46px; height: 46px;
   margin: 0 0 20px 85px;
-  background: url('../images/sprite.png') 0 0;
+  background: url('../../images/sprite.png') 0 0;
   }
 .need-more-minerals span:hover {
   color: white;
