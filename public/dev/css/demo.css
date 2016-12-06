@@ -98,91 +98,99 @@ a:hover{
 	margin: 2px 0 0 10px;
 }
 footer {
-	flex-wrap: wrap;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	width: 100%;
-	margin-top: -50px;
-	height: 50px;
-	/*opacity: .4;*/
-	text-align: center;
-	border-top: 2px solid #ADB4BC;
-	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
-	text-shadow: 0 1px 1px rgba(255,255,255,0.8);
-	font-weight: 400;
-	letter-spacing: 1px;
-	background: #fff;
-	background: rgba(255, 255, 255, 0.7);
+    margin-top: -50px;
+    height: 50px;
+    border-top: 2px solid #ADB4BC;
+    text-shadow: 0 1px 1px rgba(255,255,255,.8);
+    font-weight: 400;
+    letter-spacing: 1px;
+    background: rgba(255,255,255,.7);
+    position: relative;
+    display: block;
+		text-align: center;
 }
 .itun:hover::before, .win:hover::before,
-.wmp:hover::before {
+.wmp:hover::before, .email:hover::before,
+.twitter:hover::before {
 	transform: scale(1.2);
-	transition-duration: .4s;
+	transition: all .5s ease-in-out;
 }
-.wmp, .itun, .win {
-	min-width: 60px;
-	position: relative;
+.twitter:hover::before {
+	background-color: #64AEEB;
+	transition: background-color .5s ease-in-out;
 }
-.spacer {
-	width:66%;
+.win:hover::before {
+	background-color: #F09900;
+	transition: background-color .5s ease-in-out;
 }
-.itun {
-	padding-right: 26px;
+.itun:hover::before {
+	background-color: #E683D9;
+	transition: background-color .5s ease-in-out;
+}
+.wmp:hover::before {
+	background-color: #72A200;
+	transition: background-color .5s ease-in-out;
+}
+.email:hover::before {
+	background-color: #D34931;
+	transition: background-color .5s ease-in-out;
+}
+.wmp, .itun, .win, .email, .twitter {
+	width: 50px;
+	display: inline-block;
 }
 .wmp::before {
 	content: '';
 	position: absolute;
-	background: url(../../images/Venders.png) no-repeat 0 -64px;
+	background: url(../../images/wmp.png) no-repeat;
 	background-size: cover;
-	width: 30px;
-	height: 31px;
-	left: -40px;
-	bottom: 4px;
+	width: 38px;
+	height: 38px;
+	bottom: 5px;
+	border-radius: 28px;
 }
 .win::before {
 	content: '';
 	position: absolute;
-	background: url(../../images/Venders.png) no-repeat 0 0;
+	background: url(../../images/winamp.png) no-repeat;
 	background-size: cover;
-	width: 30px;
-	height: 31px;
-	left: -36px;
-	bottom: 4px;
+	width: 38px;
+	height: 38px;
+	bottom: 5px;
+	border-radius: 28px;
 }
 .itun::before {
 	content: '';
 	position: absolute;
-	background: url(../../images/Venders.png) no-repeat 0 -32px;
+	background: url(../../images/itunes.png) no-repeat;
 	background-size: cover;
-	width: 30px;
-	height: 31px;
-	left: -36px;
-	bottom: 4px;
-}
-.emailLink {
-	text-transform: uppercase;
-	cursor: pointer;
-}
-.emailLink a {
-	position: absolute;
-    left: 50px;
-    bottom: 0;
-	font-size: .9em;
-	font-weight: bold;
-	color: #444;
-	font-family: "Helveticaneuecyr Light";
-}
-.emailLink a:hover { color: green; }
-.email {
-	background: url(../../images/email.png) no-repeat center center;
 	width: 38px;
 	height: 38px;
-	background-size: cover;
-	opacity: .4;
-	margin: 0 6px 0 8px;
-	position: relative;
+	bottom: 5px;
+	border-radius: 28px;
 }
+.email::before {
+	content: '';
+	position: absolute;
+	background: url(../../images/mail.png) no-repeat;
+	background-size: cover;
+	width: 38px;
+	height: 38px;
+	bottom: 5px;
+	border-radius: 28px;
+}
+.twitter::before {
+	content: '';
+	position: absolute;
+	background: url(../../images/twitter.png) no-repeat;
+	background-size: cover;
+	width: 38px;
+	height: 38px;
+	bottom: 5px;
+	border-radius: 28px;
+}
+
 .support-note span{
 	color: #ac375d;
 	font-size: 16px;
@@ -342,7 +350,7 @@ footer {
 }
 
 .AlbumsDiv--Title {
-	padding: 1% 1% 1% 1%;
+	padding: 1% 1% 1% 0%;
 	font-family: "Helveticaneuecyr Ligth";
 	display: inline-block;
 	width: 80%;
@@ -362,7 +370,6 @@ footer {
 	width: 100%;
 }
 footer a {
-	line-height: 2.4em;
 	cursor: pointer;
 }
 footer a:hover {

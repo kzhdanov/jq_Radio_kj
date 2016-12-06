@@ -22,29 +22,8 @@
 		margin: 0 !important;
 	}
 	footer {
-		height: 100px;
-	}
-	.email {
-		position: relative;
-	}
-	.emailLink {
-		margin-top: 10px;
-	}
-	.emailLink a {
-		padding: 0;
 		margin: 0;
-		position: absolute;
-		left: 50px;
-		bottom: -2px;
-	}
-	.wmp::before, .win::before,  .itun::before {
-		display: none;
-	}
-	.win {
-		padding-left: 14px;
-	}
-	.itun {
-    	padding-right: 14px;
+		padding: 0;
 	}
 	.left {
 		display: none;
@@ -122,12 +101,13 @@
 	}
 	.AlbumsDiv--Img {
 		width: 100%;
-		text-align: center;
+		text-align: left;
 	}
 	.AlbumsDiv_Info {
 		width: 100%;
 		height: auto;
 		text-align: left;
+		padding: 0 2%;
 	}
 }
 	/* Main container */
