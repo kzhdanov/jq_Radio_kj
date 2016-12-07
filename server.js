@@ -197,9 +197,11 @@ app.get('/weeks', function (req, res) {
       album.GetAlbumsByWeekActive(weekNumber[0].Number, function (err, data) {
         if (!err) {
           data.map(function (e, i) {
+            //let rate = GetMiddleRate({ album: e.AlbumName, autor: e.BandName });
+
             e.src = './TESTCovers/' + e.ImgName;
             e.title = e.BandName + ' -  «' + e.AlbumName + '» ';
-            e.rate = 9;
+            e.rate = 1;
           });
 
           res.render('Weeks.ejs',
@@ -261,6 +263,24 @@ app.post('/weeks/getPrev', function (req, res) {
 app.get('/window/new', function (req, res) {
   res.render('./partials/WindowNew.ejs', { url: radioLink });
 });
+
+//ПРИВАТНАЯ ФУНКЦИЯ
+function GetMiddleRate(obj) {
+  return new Promise((resolve, reject) => {
+    rating.GetRatingMiddle(obj, function (err, data) {
+      if (!err && data && !data.length === 0) {
+        let rate = 0;
+        data.map(function (e, i) {
+          rate += e.rate;
+        });
+
+        return resolve(parseInt(Math.round(rate / data.length)));
+      } else {
+        return resolve(0);
+      }
+    });
+  });
+};
 
 app.listen(8081, function () {
   console.log('Server successfully started on 8081 port');
