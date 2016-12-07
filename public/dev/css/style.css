@@ -21,10 +21,6 @@
 	.vc-container {
 		margin: 0 !important;
 	}
-	footer {
-		margin: 0;
-		padding: 0;
-	}
 	.left {
 		display: none;
 	}
@@ -71,20 +67,9 @@
 		background-color: currentColor;
 		border-radius: 0 !important;
 	}
-
-	.spacer {width: 100% !important;}
-}
-
-@media screen and (max-device-width: 1350px) {
-	.spacer {
-		width: 60%;
-	}
 }
 
 @media screen and (max-width: 1280px) {
-	.spacer {
-		width: 56%;
-	}
 	.AlbumsDiv {
 		width: 90%;
 		margin: 2% 5% 2% 5%;
@@ -92,9 +77,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-	.spacer {
-		width: 30%;
-	}
 	.AlbumsDiv {
 		width: 90%;
 		margin: 2% 5% 2% 5%;

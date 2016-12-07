@@ -1,7 +1,7 @@
 //WEB SOCKET
 'use strict';
 let WebSocketServer = require('ws').Server,
-    wss = new WebSocketServer({port: 8080}),
+    wss = new WebSocketServer({port: 8089}),
     internetradio = require('node-internet-radio'),
     resultCash, intervalId = null, timer = 5000,
     radioLink = 'http://eu3.radioboss.fm:8022/live',

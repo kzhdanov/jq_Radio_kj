@@ -8,7 +8,7 @@
 		fallbackMessage	: 'HTML5 audio not supported',
 		initialVolume	: 0.3,
 		url : "http://eu3.radioboss.fm:8022/live",
-		ws : "ws://92.61.68.163:8080",
+		ws : "ws://localhost:8089",
 	};
 
 	$.Radio.prototype 	= {
