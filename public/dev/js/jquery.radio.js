@@ -326,8 +326,7 @@
 				}
 				instance[ options ].apply( instance, args );
 			});
-		}
-		else {
+		}	else {
 			this.each(function() {
 				var instance = $.data( this, 'cassette' );
 				if ( !instance ) {
