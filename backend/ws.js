@@ -19,6 +19,9 @@ let WSFunc = {
       if (!error) {
         let result = utils.TitleParcing.call(station);
 
+        if( !result )
+          result = defaultCash;
+
         if (defaultCash.autor != result.autor ||
             defaultCash.songName != result.songName
             || defaultCash.album != result.album) {

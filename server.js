@@ -196,19 +196,23 @@ app.get('/weeks', function (req, res) {
     album.GetLastWeekNumber(null, function (err, weekNumber) {
       album.GetAlbumsByWeekActive(weekNumber[0].Number, function (err, data) {
         if (!err) {
-          data.map(function (e, i) {
-            //let rate = GetMiddleRate({ album: e.AlbumName, autor: e.BandName });
-
+          let promises = [];
+          data.map((e, i) => {
+            promises.push(GetMiddleRate({ album: e.AlbumName, autor: e.BandName }));
             e.src = './TESTCovers/' + e.ImgName;
             e.title = e.BandName + ' -  «' + e.AlbumName + '» ';
-            e.rate = 1;
           });
 
-          res.render('Weeks.ejs',
-          {
-            items: data,
-            weekNumber: weekNumber[0].Number.toString().substring(2),
-            fullNumber: weekNumber[0].Number,
+          Promise.all(promises).then(rates => {
+            data.map((e, i) => {
+              e.rate = rates[i];
+            });
+            res.render('Weeks.ejs',
+            {
+              items: data,
+              weekNumber: weekNumber[0].Number.toString().substring(2),
+              fullNumber: weekNumber[0].Number,
+            });
           });
         }
       });
@@ -238,15 +242,25 @@ app.post('/weeks/getPrev', function (req, res) {
     if (req.body.week) {
       album.GetAlbumsByWeekActive(req.body.week, function (err, data) {
         if (!err) {
-          data.map(function (e, i) {
+          let promises = [];
+          data.map((e, i) => {
+            promises.push(GetMiddleRate({ album: e.AlbumName, autor: e.BandName }));
+
             e.src = './TESTCovers/' + e.ImgName;
             e.title = e.BandName + ' -  «' + e.AlbumName + '» ';
-            e.rate = 9;
           });
 
-          res.render('./partials/WeeksPartial.ejs', { items: data,
-            weekNumber: Number(req.body.week).toString().substring(2),
-            fullNumber: Number(req.body.week), });
+          Promise.all(promises).then(rates => {
+            data.map((e, i) => {
+              e.rate = rates[i];
+            });
+            res.render('./partials/WeeksPartial.ejs',
+            {
+              items: data,
+              weekNumber: Number(req.body.week).toString().substring(2),
+              fullNumber: Number(req.body.week),
+            });
+          });
         } else {
           console.log(err);
           res.render('./partials/WeeksPartial.ejs', { items: null });
@@ -264,20 +278,21 @@ app.get('/window/new', function (req, res) {
   res.render('./partials/WindowNew.ejs', { url: radioLink });
 });
 
-//ПРИВАТНАЯ ФУНКЦИЯ
+//ПРИВАТНАЯ ФУНКЦИЯ ПОЛУЧАЕМ РЭЙТИНГ КАЖДОГО АЛЬБОМА
 function GetMiddleRate(obj) {
   return new Promise((resolve, reject) => {
-    rating.GetRatingMiddle(obj, function (err, data) {
-      if (!err && data && !data.length === 0) {
+    rating.GetRatingMiddle(obj, (err, data) => {
+
+      if (!err && data && data.length !== 0) {
         let rate = 0;
-        data.map(function (e, i) {
+        data.map((e, i) => {
           rate += e.rate;
         });
 
         return resolve(parseInt(Math.round(rate / data.length)));
-      } else {
+      } else
         return resolve(0);
-      }
+
     });
   });
 };
