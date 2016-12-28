@@ -240,7 +240,17 @@ app.post('/weeks/getNumber', function (req, res) {
 app.post('/weeks/getPrev', function (req, res) {
   try {
     if (req.body.week) {
-      album.GetAlbumsByWeekActive(req.body.week, function (err, data) {
+      let weekNumber = req.body.week,
+          tempStartNumber;
+
+      if(weekNumber.toString().substring(2) == 0 
+        || Number(weekNumber.toString().substring(2)) > 52) {
+        tempStartNumber = Number(weekNumber.toString().substring(0,2)); 
+        tempStartNumber = Number(tempStartNumber) - 1;
+        weekNumber = tempStartNumber.toString() + 52;
+      }
+ 
+      album.GetAlbumsByWeekActive(weekNumber, function (err, data) {
         if (!err) {
           let promises = [];
           data.map((e, i) => {
@@ -257,8 +267,8 @@ app.post('/weeks/getPrev', function (req, res) {
             res.render('./partials/WeeksPartial.ejs',
             {
               items: data,
-              weekNumber: Number(req.body.week).toString().substring(2),
-              fullNumber: Number(req.body.week),
+              weekNumber: Number(weekNumber).toString().substring(2),
+              fullNumber: Number(weekNumber),
             });
           });
         } else {
